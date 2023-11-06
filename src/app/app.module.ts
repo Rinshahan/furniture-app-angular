@@ -10,6 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
+import { UserService } from './services/user.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,7 @@ import { FooterComponent } from './footer/footer.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

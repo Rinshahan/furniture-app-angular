@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-registration',
@@ -8,6 +10,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class UserRegistrationComponent implements OnInit {
   reactiveForm!: FormGroup
+  userServce: UserService = inject(UserService);
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.reactiveForm = new FormGroup({
@@ -19,12 +24,16 @@ export class UserRegistrationComponent implements OnInit {
 
   onFormSubmitted() {
     console.log(this.reactiveForm);
-    console.log(this.reactiveForm.get('email')?.value);
-    console.log('Form validity:', this.reactiveForm.valid);
+    const formvalue = this.reactiveForm.value
+    this.userServce.user.push(formvalue);
+    this.userServce.signUp()
     this.reactiveForm.reset({
       email: null,
       username: null,
       password: null
     })
+
   }
+
+
 }
