@@ -1,0 +1,24 @@
+<div class="container-fluid d-flex justify-content-center align-items-center vh-100">
+  <form (ngSubmit)="onFormSubmitted()" class="border p-4 rounded bg-light" style="width: 400px;height: 400px;"
+    #loginForm="ngForm">
+    <h2 class="text-center">Login</h2>
+    <div class="mb-3" style="margin-top: 50px;">
+      <input type="text" name="username" class="form-control" style="width: 100%;" placeholder="Username" ngModel
+        required #uname="ngModel">
+      <div class="text-center">
+        <small *ngIf="uname.invalid && uname.touched">*username is required</small>
+      </div>
+    </div>
+    <div class="mb-3">
+      <input type="password" name="password" class="form-control" style="width: 100%;" placeholder="Password" ngModel
+        required #pword="ngModel">
+      <div class="text-center">
+        <small *ngIf="pword.invalid && pword.touched">*password is required</small>
+      </div>
+    </div>
+    <div class="d-grid gap-2">
+      <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+      <button class="btn btn-success" routerLink="/usersignup">Sign Up</button>
+    </div>
+  </form>
+</div>
