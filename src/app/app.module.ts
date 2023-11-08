@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { UserService } from './services/user.service';
+import { AllproductsComponent } from './allproducts/allproducts.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +20,9 @@ import { UserService } from './services/user.service';
     UserLoginComponent,
     UserRegistrationComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    AllproductsComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,

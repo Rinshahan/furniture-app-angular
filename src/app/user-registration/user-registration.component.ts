@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-registration.component.css']
 })
 export class UserRegistrationComponent implements OnInit {
-  reactiveForm!: FormGroup
+  reactiveForm: FormGroup
   userServce: UserService = inject(UserService);
 
   constructor(private router: Router) { }
@@ -32,8 +32,5 @@ export class UserRegistrationComponent implements OnInit {
       username: null,
       password: null
     })
-
   }
-
-
 }

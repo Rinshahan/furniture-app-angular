@@ -29,7 +29,7 @@ export class UserLoginComponent {
       const formvalue = this.form.value
       this.userService.userlogin.push(formvalue)
       this.userService.login();
+      this.form.reset();
     }
-    this.router.navigate(['home'])
   }
 }

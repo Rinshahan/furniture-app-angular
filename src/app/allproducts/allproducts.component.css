@@ -1,12 +1,3 @@
-.cards img:hover {
-  transform: scale(1.1);
-  cursor: pointer;
-}
-
-.cards img {
-  transition: transform 1s;
-}
-
 @media (max-width: 576px) {
   .card {
     margin-left: 60px;
@@ -25,4 +16,18 @@
   .card {
     width: 33.33%;
   }
+}
+
+.image-products {
+  height: 300px;
+  object-fit: cover;
+}
+
+.cards img:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.cards img {
+  transition: transform 1s;
 }

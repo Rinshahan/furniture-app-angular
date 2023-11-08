@@ -1,6 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
 import { user } from '../models/user.model';
-import { JsonPipe } from '@angular/common';
 import { userlogin } from '../models/userlogin.model';
 import { Router } from '@angular/router';
 
@@ -19,15 +18,18 @@ export class UserService {
   user: user[] = []
   userlogin: userlogin[] = []
   signUp() {
-    const username = this.user[0].username
-    console.log(username);
-    if (this.user.length > 0 && this.user.some((x) => x.username)) {
-      alert("the username is already exist")
-    } else {
-      localStorage.setItem('signUpUsers', JSON.stringify(this.user))
-      this.router.navigate(['userlogin']);
-      alert('User SignedUp Successfully');
-    }
+    // for (const user of this.user) {
+    //   const username = user.user
+    //   console.log(username);
+    //   if (this.user.some(x => x.username === username)) {
+    //     alert("the username is already exist")
+    //   } else {
+    localStorage.setItem('signUpUsers', JSON.stringify(this.user))
+    this.router.navigate(['userlogin'])
+    //     this.router.navigate(['userlogin']);
+    //     alert('User SignedUp Successfully');
+    //   }
+    // }
   }
 
   login() {
@@ -41,6 +43,7 @@ export class UserService {
     const userExist = this.user.find(x => x.username === username && x.password === password)
     if (userExist != undefined) {
       alert('User Login Successfully')
+      this.router.navigate(['home'])
     } else {
       alert('mission failed')
     }
