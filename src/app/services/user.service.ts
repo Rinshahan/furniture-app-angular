@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class UserService {
+
+  showSearchBox: boolean = true
   constructor(private router: Router) {
     const localdata = localStorage.getItem('signUpUsers');
     if (localdata != null) {

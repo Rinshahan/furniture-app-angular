@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ProductsService } from '../services/products.service';
 import { products } from '../models/products.model';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-allproducts',
@@ -9,12 +10,11 @@ import { products } from '../models/products.model';
 })
 export class AllproductsComponent implements OnInit {
   productService: ProductsService = inject(ProductsService);
-
+  constructor(private userService: UserService) { }
   allProducts: products[]
 
   ngOnInit(): void {
     this.allProducts = this.productService.allproducts
-    console.log(this.allProducts);
-
+    this.userService.showSearchBox = true
   }
 }

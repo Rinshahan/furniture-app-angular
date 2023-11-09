@@ -5,7 +5,8 @@
 <div class="container  d-flex justify-content-center align-items-center">
   <div class="row">
     <div class="card mt-5 me-5  cards" style="width: 280px; " *ngFor="let products of allProducts">
-      <img class="card-img-top w-100px image-products" [src]="products.productimage">
+      <a [routerLink]="'/productview/'+(products.productid)"><img class="card-img-top w-100px image-products"
+          [src]="products.productimage"></a>
       <div class="card-body">
         <h5 style="text-decoration: none;">{{products.productname}}</h5>
         <h6>Price : {{products.productprice | currency:'INR'}}</h6>

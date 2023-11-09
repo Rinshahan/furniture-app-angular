@@ -13,6 +13,17 @@ import { FooterComponent } from './footer/footer.component';
 import { UserService } from './services/user.service';
 import { AllproductsComponent } from './allproducts/allproducts.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { BedsComponent } from './beds/beds.component';
+import { SofasComponent } from './sofas/sofas.component';
+import { DiningtablesComponent } from './diningtables/diningtables.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatSelectModule } from '@angular/material/select'
+import { ProductsService } from './services/products.service';
+import { FilterService } from './services/filter.service';
+import { FilterPipe } from './pipes/filter.pipe';
+import { ProductdetailComponent } from './productdetail/productdetail.component';
+import { CartComponent } from './cart/cart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,15 +33,22 @@ import { NotfoundComponent } from './notfound/notfound.component';
     NavbarComponent,
     FooterComponent,
     AllproductsComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    BedsComponent,
+    SofasComponent,
+    DiningtablesComponent,
+    FilterPipe,
+    ProductdetailComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
   ],
-  providers: [UserService],
+  providers: [UserService, ProductsService, FilterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
