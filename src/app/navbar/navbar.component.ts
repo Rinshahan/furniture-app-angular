@@ -8,9 +8,11 @@ import { UserService } from '../services/user.service';
 })
 export class NavbarComponent implements OnInit {
   showSearchBox: boolean;
+  showCart: boolean;
   constructor(private userService: UserService) {
   }
   ngOnInit(): void {
     this.showSearchBox = this.userService.showSearchBox
+    this.showCart = this.userService.showCart
   }
 }

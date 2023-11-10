@@ -12,5 +12,6 @@ export class HomePageComponent implements OnInit {
   constructor(private userService: UserService) { }
   ngOnInit(): void {
     this.userService.showSearchBox = false
+    this.userService.showCart = false
   }
 }

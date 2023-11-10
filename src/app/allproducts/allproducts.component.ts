@@ -16,5 +16,6 @@ export class AllproductsComponent implements OnInit {
   ngOnInit(): void {
     this.allProducts = this.productService.allproducts
     this.userService.showSearchBox = true
+    this.userService.showCart = true
   }
 }

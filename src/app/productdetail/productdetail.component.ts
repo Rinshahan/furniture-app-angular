@@ -12,10 +12,17 @@ import { UserService } from '../services/user.service';
 export class ProductdetailComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private userService: UserService, private filterService: FilterService) { }
   product: products[] = []
+  id: string;
+  disable: boolean;
   ngOnInit(): void {
-    let id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.filterService.viewProducts(parseInt(id))
+    this.disable = this.filterService.disable;
+    this.id = this.activatedRoute.snapshot.paramMap.get('id');
+    this.filterService.viewProducts(parseInt(this.id))
     this.product = this.filterService.viewedProduct;
     this.userService.showSearchBox = false
+  }
+
+  addToCart() {
+    this.filterService.goToCart(parseInt(this.id))
   }
 }

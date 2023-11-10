@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class UserService {
 
   showSearchBox: boolean = true
+  showCart: boolean = true
   constructor(private router: Router) {
     const localdata = localStorage.getItem('signUpUsers');
     if (localdata != null) {
