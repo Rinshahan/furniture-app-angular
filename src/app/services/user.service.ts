@@ -20,6 +20,7 @@ export class UserService {
   logindatas: object[] = []
   user: user[] = []
   userlogin: userlogin[] = []
+  isLogged: boolean = false
   signUp() {
     // for (const user of this.user) {
     //   const username = user.user
@@ -35,20 +36,21 @@ export class UserService {
     // }
   }
 
-  login() {
+  login(username: string, password: string) {
     this.logindatas.push(this.userlogin)
-    console.log(this.user);
-    const username = this.userlogin[0].username
-    const password = this.userlogin[0].password
-    console.log(username);
-    console.log(password);
 
-    const userExist = this.user.find(x => x.username === username && x.password === password)
-    if (userExist != undefined) {
-      alert('User Login Successfully')
-      this.router.navigate(['home'])
+    let findUser = this.user.filter(x => { return x.username === username && x.password === password })
+
+    // const userExist = this.user.find(x => x.username === username && x.password === password)
+    if (findUser.length === 0) {
+      alert('You are Not Registered')
     } else {
-      alert('mission failed')
+      this.router.navigate(['home'])
+      alert('Login Success')
+      this.isLogged = true
     }
   }
+
+
+
 }

@@ -17,7 +17,7 @@ export class CartComponent implements OnInit, OnChanges {
   }
   ngOnInit(): void {
     this.userService.showSearchBox = false;
-
+    this.userService.showCart = false
     this.cartProducts = this.filterService.toCartProducts
     this.updateTotalPrice()
     console.log(this.cartProducts);

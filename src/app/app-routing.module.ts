@@ -10,6 +10,7 @@ import { BedsComponent } from './beds/beds.component';
 import { DiningtablesComponent } from './diningtables/diningtables.component';
 import { ProductdetailComponent } from './productdetail/productdetail.component';
 import { CartComponent } from './cart/cart.component';
+import { authGuard } from './auth.guard';
 
 const routes: Routes = [
   { path: 'home', component: HomePageComponent },
@@ -20,7 +21,7 @@ const routes: Routes = [
   { path: 'sofas/:type', component: SofasComponent },
   { path: 'beds/:type', component: BedsComponent },
   { path: 'dinings/:type', component: DiningtablesComponent },
-  { path: 'productview/:id', component: ProductdetailComponent },
+  { path: 'productview/:id', component: ProductdetailComponent, canActivate: [authGuard] },
   { path: 'cart', component: CartComponent },
   { path: '**', component: NotfoundComponent }
 ];

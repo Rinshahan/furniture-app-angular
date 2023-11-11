@@ -27,8 +27,10 @@ export class UserLoginComponent {
     if (this.form) {
       console.log(this.form);
       const formvalue = this.form.value
+      let username: string = this.form.value.username
+      let password: string = this.form.value.password
       this.userService.userlogin.push(formvalue)
-      this.userService.login();
+      this.userService.login(username, password);
       this.form.reset();
     }
   }
