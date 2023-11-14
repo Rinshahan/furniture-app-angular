@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { products } from '../models/products.model';
+import { Product } from '../models/products.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
-  allproducts: products[] = [
+  allproducts: Product[] = [
     { productid: 7, type: `Bed`, productname: 'Cartlon Woodwine Bed', productdesc: `Experience the warmth and comfort of our luxurious down comforter. This comforter is filled with premium down and feathers, providing exceptional insulation and loft. The comforter is also available in a variety of weights to suit your climate and preferences.`, productprice: 17999, productimage: './../assets/products/cartlon woodwine bed.webp', quantity: 1 },
     { productid: 8, type: `Bed`, productname: 'Godrej V2.0 Bed', productdesc: `Upgrade your sleep experience with our luxurious Egyptian cotton sheets. These sheets are made from the finest cotton fibers, providing a soft, smooth, and breathable feel. The sheets are also available in a variety of colors and patterns to match your décor.`, productprice: 17999, productimage: './../assets/products/godrej v2.webp', quantity: 1 },
     { productid: 9, type: `Bed`, productname: 'Metallika Bed', productdesc: `Enjoy the comfort and support of our bamboo pillows. These pillows are filled with shredded bamboo, providing a cool, breathable feel. The pillows are also hypoallergenic, making them ideal for allergy sufferers.`, productprice: 17999, productimage: './../assets/products/metallika.webp', quantity: 1 },

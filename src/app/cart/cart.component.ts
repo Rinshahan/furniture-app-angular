@@ -1,7 +1,7 @@
 import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { ProductsService } from '../services/products.service';
-import { products } from '../models/products.model';
+import { Product } from '../models/products.model';
 import { FilterService } from '../services/filter.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { FilterService } from '../services/filter.service';
 export class CartComponent implements OnInit, OnChanges {
   totalPrice = 0;
   totalQuantity = 0
-  cartProducts: products[] = []
+  cartProducts: Product[] = []
   constructor(private userService: UserService, private filterService: FilterService) {
   }
   ngOnInit(): void {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { SearchService } from '../services/search.service';
 
@@ -11,17 +11,28 @@ export class NavbarComponent implements OnInit {
   showSearchBox: boolean;
   showCart: boolean;
   loggedIn: boolean;
-  searchData: string = 'all';
+  searchData: string = '';
+
+  @Output()
+  searchTextChanged: EventEmitter<string> = new EventEmitter<string>();
   constructor(private userService: UserService, private search: SearchService) {
   }
   ngOnInit(): void {
     this.showSearchBox = this.userService.showSearchBox
     this.showCart = this.userService.showCart
     this.loggedIn = this.userService.isLogged
+    console.log(this.searchData);
+
   }
 
-  searchProduct() {
-    this.search.searchData = this.searchData
-    this.search.search()
+  onSearchTextChanged() {
+    this.searchTextChanged.emit(this.searchData)
   }
+
+  // searchProduct() {
+  //   console.log(this.searchData);
+  //   this.search.searchData = this.searchData
+  //   this.search.search()
+  //   this.onSearchTextChanged()
+  // }
 }

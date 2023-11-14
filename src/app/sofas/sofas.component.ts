@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { products } from '../models/products.model';
+import { Product } from '../models/products.model';
 import { ActivatedRoute } from '@angular/router';
 import { FilterService } from '../services/filter.service';
 
@@ -10,7 +10,7 @@ import { FilterService } from '../services/filter.service';
 })
 export class SofasComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private filterService: FilterService) { }
-  sofa: products[] = []
+  sofa: Product[] = []
   ngOnInit(): void {
     const type = this.activatedRoute.snapshot.paramMap.get("type");
     this.filterService.filteringBeds(type);

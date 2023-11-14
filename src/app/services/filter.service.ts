@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { ProductsService } from './products.service';
-import { products } from '../models/products.model';
+import { Product } from '../models/products.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilterService {
   disable: boolean = false
-  filteredProducts: products[] = []
-  viewedProduct: products[] = []
-  toCartProducts: products[] = []
+  filteredProducts: Product[] = []
+  viewedProduct: Product[] = []
+  toCartProducts: Product[] = []
   constructor(private productService: ProductsService) { }
 
   filteringBeds(type: string) {

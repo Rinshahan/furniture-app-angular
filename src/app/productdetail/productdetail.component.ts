@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { products } from '../models/products.model';
+import { Product } from '../models/products.model';
 import { FilterService } from '../services/filter.service';
 import { UserService } from '../services/user.service';
 
@@ -11,7 +11,7 @@ import { UserService } from '../services/user.service';
 })
 export class ProductdetailComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private userService: UserService, private filterService: FilterService) { }
-  product: products[] = []
+  product: Product[] = []
   id: string;
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');

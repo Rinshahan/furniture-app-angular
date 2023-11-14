@@ -24,6 +24,8 @@ import { FilterService } from './services/filter.service';
 import { FilterPipe } from './pipes/filter.pipe';
 import { ProductdetailComponent } from './productdetail/productdetail.component';
 import { CartComponent } from './cart/cart.component';
+import { SharedModule } from './shared/shared.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +42,7 @@ import { CartComponent } from './cart/cart.component';
     FilterPipe,
     ProductdetailComponent,
     CartComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -47,6 +50,7 @@ import { CartComponent } from './cart/cart.component';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    SharedModule
   ],
   providers: [UserService, ProductsService, FilterService],
   bootstrap: [AppComponent]
