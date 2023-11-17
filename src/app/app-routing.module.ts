@@ -1,29 +1,28 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomePageComponent } from './home-page/home-page.component';
-import { UserLoginComponent } from './user-login/user-login.component';
-import { UserRegistrationComponent } from './user-registration/user-registration.component';
-import { AllproductsComponent } from './allproducts/allproducts.component';
-import { NotfoundComponent } from './notfound/notfound.component';
-import { SofasComponent } from './sofas/sofas.component';
-import { BedsComponent } from './beds/beds.component';
-import { DiningtablesComponent } from './diningtables/diningtables.component';
-import { ProductdetailComponent } from './productdetail/productdetail.component';
-import { CartComponent } from './cart/cart.component';
-import { authGuard } from './auth.guard';
+import { HomePageComponent } from './core/home-page/home-page.component';
+import { NotfoundComponent } from './core/notfound/notfound.component';
+import { BedsComponent } from './product/beds/beds.component';
+import { DiningtablesComponent } from './product/diningtables/diningtables.component';
+import { SofasComponent } from './product/sofas/sofas.component';
+import { ProductdetailComponent } from './product/productdetail/productdetail.component';
+import { CartComponent } from './product/cart/cart.component';
+import { authGuard } from './core/guards/auth.guard';
+import { UserLoginComponent } from './userlogin/user-login/user-login.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomePageComponent },
+  { path: 'home', loadChildren: () => import('./core/core.module').then(m => m.CoreModule) },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'usersignup', loadChildren: () => import('./userlogin/user.module').then(m => m.UserModule) },
   { path: 'userlogin', component: UserLoginComponent },
-  { path: 'usersignup', component: UserRegistrationComponent },
-  { path: 'allproducts', component: AllproductsComponent },
+  { path: 'allproducts', loadChildren: () => import('./product/product.module').then(m => m.ProductModule) },
   { path: 'sofas/:type', component: SofasComponent },
   { path: 'beds/:type', component: BedsComponent },
   { path: 'dinings/:type', component: DiningtablesComponent },
   { path: 'productview/:id', component: ProductdetailComponent, canActivate: [authGuard] },
+  { path: 'adminregistration', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
   { path: 'cart', component: CartComponent },
-  { path: '**', component: NotfoundComponent }
+
 ];
 
 @NgModule({

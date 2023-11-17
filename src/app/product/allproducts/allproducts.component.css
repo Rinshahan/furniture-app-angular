@@ -4,14 +4,14 @@
   }
 }
 
-/* For screens between 576px and 768px, make the cards 50% wide */
+
 @media (min-width: 576px) and (min-width: 677px) {
   .card {
     width: 50%;
   }
 }
 
-/* For screens larger than 768px, make the cards 33.33% wide */
+
 @media (min-width: 768px) {
   .card {
     width: 33.33%;
