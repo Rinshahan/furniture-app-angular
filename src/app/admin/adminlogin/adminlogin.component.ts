@@ -21,7 +21,13 @@ export class AdminloginComponent {
       console.log(this.form);
       const formvalue = this.form.value
       let username: string = this.form.value.username
-      let password: string = this.form.value.password
+      let password: number = this.form.value.password
+      if (username == 'admin' && password == 123) {
+        this.router.navigate(['/adminhome'])
+        alert("Admin Login Success")
+      } else {
+        alert("Please Check Your Login Credentials")
+      }
       this.form.reset();
     }
   }

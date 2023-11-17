@@ -9,6 +9,7 @@ import { ProductdetailComponent } from './product/productdetail/productdetail.co
 import { CartComponent } from './product/cart/cart.component';
 import { authGuard } from './core/guards/auth.guard';
 import { UserLoginComponent } from './userlogin/user-login/user-login.component';
+import { AdminhomeComponent } from './admin/adminhome/adminhome.component';
 
 const routes: Routes = [
   { path: 'home', loadChildren: () => import('./core/core.module').then(m => m.CoreModule) },
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'beds/:type', component: BedsComponent },
   { path: 'dinings/:type', component: DiningtablesComponent },
   { path: 'productview/:id', component: ProductdetailComponent, canActivate: [authGuard] },
-  { path: 'adminregistration', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
+  { path: 'adminlogin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
+  { path: 'adminhome', component: AdminhomeComponent },
   { path: 'cart', component: CartComponent },
 
 ];
