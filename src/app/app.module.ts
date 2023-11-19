@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 
 
@@ -20,7 +21,8 @@ import { CoreModule } from './core/core.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     CoreModule,
-    SharedModule
+    SharedModule,
+    CollapseModule.forRoot()
   ],
   bootstrap: [AppComponent]
 })

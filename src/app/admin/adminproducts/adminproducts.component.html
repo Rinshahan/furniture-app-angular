@@ -1,0 +1,224 @@
+<div class="container-fluid">
+  <div class="row flex-nowrap">
+    <div [class.collapsed]="isSideBarCollapsed" class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+      <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+        <a class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+          <button class="btn btn-primary d-md-block d-lg-none" (click)="toggleSideBar()">
+            <i class="fs-4 bi-list"></i>
+          </button>
+          <span class="fs-5 d-none d-sm-inline"></span>
+        </a>
+        <ul [ngClass]="{'expanded': !isSideBarCollapsed, 'collapsed': isSideBarCollapsed}"
+          class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+          <!-- <li class="nav-item">
+            <a href="#" class="nav-link align-middle px-0">
+              <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+            </a>
+          </li> -->
+          <li>
+            <a class="nav-link px-0 align-middle">
+              <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
+            <!-- <ul *ngIf="isSideBarCollapsed" class="collapse show nav flex-column ms-1" id="submenu1"
+              data-bs-parent="#menu">
+              <li class="w-100">
+                <a class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1 </a>
+              </li>
+              <li>
+                <a class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2 </a>
+              </li>
+            </ul> -->
+          </li>
+          <li>
+            <a routerLink="/adminusers" class="nav-link px-0 align-middle">
+              <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Users</span></a>
+          </li>
+          <li>
+            <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+              <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Products</span></a>
+            <!-- <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+              <li class="w-100">
+                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1</a>
+              </li>
+              <li>
+                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2</a>
+              </li>
+            </ul> -->
+          </li>
+          <li>
+            <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Add Product</span> </a>
+            <!-- <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+              <li class="w-100">
+                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 1</a>
+              </li>
+              <li>
+                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 2</a>
+              </li>
+              <li>
+                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 3</a>
+              </li>
+              <li>
+                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 4</a>
+              </li>
+            </ul> -->
+          </li>
+          <li>
+            <a href="#" class="nav-link px-0 align-middle">
+              <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
+          </li>
+        </ul>
+        <hr>
+        <div class="dropdown pb-4">
+          <a class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
+            <span class="d-none d-sm-inline mx-1">ADMIN</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+            <!-- <li><a class="dropd own-item" href="#">New project...</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li> -->
+            <li><a class="dropdown-item" routerLink="/userlogin">Sign out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col py-3">
+      <!-- <div class="container-fluid px-0">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed">
+          <div class="container-fluid d-flex"> <a class="navbar-brand" href="#">SiteBack</a>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item" role="presentation"> <a class="nav-link active" id="home-tab" data-toggle="tab"
+                  href="#home" role="tab" aria-controls="home" aria-selected="true">Couches</a> </li>
+              <li class="nav-item" role="presentation"> <a class="nav-link" id="profile-tab" data-toggle="tab"
+                  href="#profile" role="tab" aria-controls="profile" aria-selected="false">Chair</a> </li>
+              <li class="nav-item" role="presentation"> <a class="nav-link" id="contact-tab" data-toggle="tab"
+                  href="#contact" role="tab" aria-controls="contact" aria-selected="false">Dining</a> </li>
+            </ul>
+          </div>
+        </nav>
+      </div> -->
+      <!-- <div class="container-fluid mt-2 mb-5">
+        <div class="products">
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+              <div class="d-flex justify-content-between p-3 bg-white mb-3 align-items-center"> <span
+                  class="font-weight-bold text-uppercase">Luxury Couch</span>
+                <div> <img src="https://img.icons8.com/windows/100/000000/list.png" width="30" /> <img
+                    src="https://img.icons8.com/ios-filled/100/000000/squared-menu.png" width="25" /> </div>
+              </div>
+              <div class="row g-3">
+                <div class="col-md-4">
+                  <div class="card" *ngFor="let product of adminProducts"> <img [src]="product.productimage"
+                      class="card-img-top">
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between"> <span
+                          class="font-weight-bold">{{product.productname}}</span>
+                        <span class="font-weight-bold">{{product.productprice | currency:'INR'}}</span>
+                      </div>
+                      <p class="card-text mb-1 mt-1">{{product.productdesc}}</p>
+                      <div class="d-flex align-items-center flex-row"> <img src="https://i.imgur.com/e9VnSng.png"
+                          width="20"> <span class="guarantee">2 Years Guarantee</span> </div>
+                    </div>
+                    <hr>
+                    <div class="card-body">
+                      <div class="text-right buttons"> <button class="btn btn-outline-dark">Edit Product</button>
+                        <button class="btn btn-dark">Delete Product</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- <div class="container-fluid mt-2 mb-5">
+        <div class="products">
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+              <div class="d-flex justify-content-between p-3 bg-white mb-3 align-items-center">
+                <span class="font-weight-bold text-uppercase">Luxury Couch</span>
+                <div>
+                  <img src="https://img.icons8.com/windows/100/000000/list.png" width="30" />
+                  <img src="https://img.icons8.com/ios-filled/100/000000/squared-menu.png" width="25" />
+                </div>
+              </div>
+              <div class="row g-3">
+                <div class="col-md-4" *ngFor="let product of adminProducts">
+                  <div class="card">
+                    <img class="image" [src]="product.productimage" class="card-img-top">
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between">
+                        <span class="font-weight-bold">{{ product.productname }}</span>
+                        <span class="font-weight-bold">{{ product.productprice | currency:'INR' }}</span>
+                      </div>
+                      <p class="card-text mb-1 mt-1">{{ product.productdesc }}</p>
+                      <div class="d-flex align-items-center flex-row">
+                        <img src="https://i.imgur.com/e9VnSng.png" width="20">
+                        <span class="guarantee">Type:{{product.type}}</span>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="card-body">
+                      <div class="text-right buttons">
+                        <button class="btn btn-outline-dark">Edit Product</button>
+                        <button class="btn btn-dark">Delete Product</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- Existing code above this line remains unchanged -->
+
+      <div class="container-fluid mt-2 mb-5">
+        <div class="products">
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th> Image</th>
+                    <th> Name</th>
+                    <th> Price</th>
+                    <th> Description</th>
+                    <th>Type</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let product of adminProducts">
+                    <td><img class="image" [src]="product.productimage" class="card-img-top"></td>
+                    <td>{{ product.productname }}</td>
+                    <td>{{ product.productprice | currency:'INR' }}</td>
+                    <td>{{ product.productdesc }}</td>
+                    <td>{{ product.type }}</td>
+                    <td>
+                      <button class="btn btn-primary">Edit</button>
+                      <br><br>
+                      <button class="btn btn-danger">Delete</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Existing code below this line remains unchanged -->
+
+
+    </div>
+  </div>
+</div>

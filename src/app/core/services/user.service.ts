@@ -30,6 +30,7 @@ export class UserService {
     //   } else {
     localStorage.setItem('signUpUsers', JSON.stringify(this.user))
     this.router.navigate(['userlogin'])
+
     //     this.router.navigate(['userlogin']);
     //     alert('User SignedUp Successfully');
     //   }

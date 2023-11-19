@@ -10,6 +10,8 @@ import { CartComponent } from './product/cart/cart.component';
 import { authGuard } from './core/guards/auth.guard';
 import { UserLoginComponent } from './userlogin/user-login/user-login.component';
 import { AdminhomeComponent } from './admin/adminhome/adminhome.component';
+import { AdminusersComponent } from './admin/adminusers/adminusers.component';
+import { AdminproductsComponent } from './admin/adminproducts/adminproducts.component';
 
 const routes: Routes = [
   { path: 'home', loadChildren: () => import('./core/core.module').then(m => m.CoreModule) },
@@ -23,6 +25,8 @@ const routes: Routes = [
   { path: 'productview/:id', component: ProductdetailComponent, canActivate: [authGuard] },
   { path: 'adminlogin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
   { path: 'adminhome', component: AdminhomeComponent },
+  { path: 'adminusers', component: AdminusersComponent },
+  { path: 'adminproducts', component: AdminproductsComponent },
   { path: 'cart', component: CartComponent },
 
 ];

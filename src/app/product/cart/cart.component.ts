@@ -35,7 +35,6 @@ export class CartComponent implements OnInit, OnChanges {
 
   deleteProduct(product) {
     const index = this.cartProducts.indexOf(product)
-    console.log(index);
     this.cartProducts.splice(index, 1)
     this.updateTotalPrice()
   }

@@ -6,7 +6,8 @@ import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { CollapseModule } from 'ngx-bootstrap/collapse'
 
 
 
@@ -14,13 +15,15 @@ import { RouterModule } from '@angular/router';
   declarations: [
     ProductCardComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    SidenavComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    CollapseModule.forRoot()
   ],
-  exports: [ProductCardComponent, FooterComponent, NavbarComponent]
+  exports: [ProductCardComponent, FooterComponent, NavbarComponent, SidenavComponent, CollapseModule]
 })
 export class SharedModule { }
