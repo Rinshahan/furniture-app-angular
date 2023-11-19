@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/core/models/products.model';
+import { AdminService } from 'src/app/core/services/admin.service';
 import { ProductsService } from 'src/app/core/services/products.service';
 
 @Component({
@@ -10,11 +11,15 @@ import { ProductsService } from 'src/app/core/services/products.service';
 export class AdminproductsComponent implements OnInit {
   isSideBarCollapsed: boolean = false
   adminProducts: Product[]
-  constructor(private productService: ProductsService) { }
+  constructor(private productService: ProductsService, adminService: AdminService) { }
   ngOnInit(): void {
     this.adminProducts = this.productService.allproducts
   }
   toggleSideBar(): void {
     this.isSideBarCollapsed = !this.isSideBarCollapsed;
+  }
+
+  deleteProduct(product: Product) {
+    this.productService.deleteProduct(product.productid)
   }
 }

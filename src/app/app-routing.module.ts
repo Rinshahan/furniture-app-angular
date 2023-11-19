@@ -12,6 +12,7 @@ import { UserLoginComponent } from './userlogin/user-login/user-login.component'
 import { AdminhomeComponent } from './admin/adminhome/adminhome.component';
 import { AdminusersComponent } from './admin/adminusers/adminusers.component';
 import { AdminproductsComponent } from './admin/adminproducts/adminproducts.component';
+import { AddproductsComponent } from './admin/addproducts/addproducts.component';
 
 const routes: Routes = [
   { path: 'home', loadChildren: () => import('./core/core.module').then(m => m.CoreModule) },
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'adminhome', component: AdminhomeComponent },
   { path: 'adminusers', component: AdminusersComponent },
   { path: 'adminproducts', component: AdminproductsComponent },
+  {path:'addproducts',component:AddproductsComponent},
   { path: 'cart', component: CartComponent },
 
 ];

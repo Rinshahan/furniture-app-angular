@@ -87,7 +87,80 @@
       </div>
     </div>
     <div class="col py-3">
-      <!--MAin Content-->
+      <form class="form-horizontal" (ngSubmit)="onFormSubmitted()" #productForm="ngForm">
+        <!-- Form Name -->
+        <legend class="text-center">PRODUCTS</legend>
+
+        <!-- Text input-->
+        <div class="form-group row">
+          <label class="col-md-4 col-form-label text-md-right" for="product_id">PRODUCT ID</label>
+          <div class="col-md-6">
+            <input id="product_id" name="productid" placeholder="PRODUCT ID" class="form-control" required=""
+              type="text" ngModel>
+          </div>
+        </div>
+        <!-- Category -->
+        <div class="form-group row">
+          <label class="col-md-4 col-form-label text-md-right" for="product_id">CATEGORY</label>
+          <div class="col-md-6">
+            <input id="product_id" name="productcategory" placeholder="PRODUCT CATEGORY" class=" form-control"
+              required="" type="text" ngModel>
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group row">
+          <label class="col-md-4 col-form-label text-md-right" for="product_name">PRODUCT NAME</label>
+          <div class="col-md-6">
+            <input id="product_name" name="productname" placeholder="PRODUCT NAME" class="form-control" required=""
+              type="text" ngModel>
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group row">
+          <label class="col-md-4 col-form-label text-md-right" for="product_name_fr">PRODUCT DESCRIPTION</label>
+          <div class="col-md-6">
+            <input id="product_name_fr" name="productdesc" placeholder="PRODUCT DESCRIPTION" class="form-control"
+              required="" type="text" ngModel>
+          </div>
+        </div>
+        <!-- Text input-->
+        <div class="form-group row">
+          <label class="col-md-4 col-form-label text-md-right" for="product_name_fr">PRODUCT PRICE</label>
+          <div class="col-md-6">
+            <input id="product_name_fr" name="productprice" placeholder="PRODUCT PRICE" class="form-control" required=""
+              type="number" ngModel>
+          </div>
+        </div>
+        <!-- Text input-->
+        <div class="form-group row">
+          <label class="col-md-4 col-form-label text-md-right" for="product_name_fr">PRODUCT IMAGE</label>
+          <div class="col-md-6">
+            <input id="product_name_fr" name="productimage" placeholder="IMAGE URL" class="form-control" required=""
+              type="text" ngModel>
+          </div>
+        </div>
+
+
+        <div class="form-group row">
+          <label class="col-md-4 col-form-label text-md-right" for="product_name_fr">PRODUCT QUANTITY</label>
+          <div class="col-md-6">
+            <input id="product_name_fr" name="productquantity" placeholder="PRODUCT QUANTITY" class="form-control"
+              required="" type="number" ngModel>
+          </div>
+        </div>
+
+
+
+
+        <!-- Repeat similar structure for other form elements -->
+
+        <!-- Button -->
+        <div class="form-group row">
+          <div class="col-md-4 offset-md-4">
+            <button id="singlebutton" type="submit" name="singlebutton" class="btn btn-primary">ADD PRODUCT</button>
+          </div>
+        </div>
+      </form>
     </div>
-  </div>
-</div>

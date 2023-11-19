@@ -43,6 +43,13 @@ export class ProductsService {
     { productid: 31, type: `Dining`, productname: `Plastic Table`, productdesc: `Add a touch of traditional elegance to your dining room with our classic pedestal dining table. This table features a pedestal base that supports a round or oval top. The pedestal base provides a clean and streamlined look that complements a variety of décor styles.`, productprice: 2700, productimage: `./../assets/products/diningtables/plastic.webp`, quantity: 1 },
     { productid: 32, type: `Dining`, productname: `Wood Foldable Table`, productdesc: `Make a bold statement in your dining room with our industrial-chic concrete dining table. This table features a durable concrete top that is both stylish and functional. The concrete top is easy to clean and maintain, making it a great choice for everyday use.`, productprice: 12890, productimage: `./../assets/products/diningtables/foldable.webp`, quantity: 1 },
   ]
+
+  deleteProduct(productId: number): void {
+    const index = this.allproducts.findIndex(product => product.productid === productId)
+    if (index !== -1) {
+      this.allproducts.splice(index, 1)
+    }
+  }
   constructor() { }
 }
 

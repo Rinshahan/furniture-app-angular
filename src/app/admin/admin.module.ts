@@ -7,6 +7,7 @@ import { AdminhomeComponent } from './adminhome/adminhome.component';
 import { SharedModule } from '../shared/shared.module';
 import { AdminusersComponent } from './adminusers/adminusers.component';
 import { AdminproductsComponent } from './adminproducts/adminproducts.component';
+import { AddproductsComponent } from './addproducts/addproducts.component';
 
 const routes: Routes = [
   { path: "", component: AdminloginComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
     AdminhomeComponent,
     AdminusersComponent,
     AdminproductsComponent,
+    AddproductsComponent,
 
   ],
   imports: [
