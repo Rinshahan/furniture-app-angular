@@ -54,7 +54,7 @@ export class ProductsService {
   updateProduct(productId: number, updatedProduct: Product): void {
     const index = this.allproducts.findIndex(product => product.productid === productId)
     if (index !== -1) {
-      this.allproducts[index] = { ...this.allproducts[index], ...updatedProduct }
+      this.allproducts[index] = { ...updatedProduct }
     }
   }
   constructor() { }

@@ -13,5 +13,7 @@ export class SidenavComponent {
 
   toggleSideBar(): void {
     this.isSideBarCollapsed = !this.isSideBarCollapsed;
+    if (this.isSideBarCollapsed) { this.isSideBarCollapsed = true }
+
   }
 }

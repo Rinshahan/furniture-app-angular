@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './core/home-page/home-page.component';
-import { NotfoundComponent } from './core/notfound/notfound.component';
+
 import { BedsComponent } from './product/beds/beds.component';
 import { DiningtablesComponent } from './product/diningtables/diningtables.component';
 import { SofasComponent } from './product/sofas/sofas.component';
@@ -14,6 +14,7 @@ import { AdminusersComponent } from './admin/adminusers/adminusers.component';
 import { AdminproductsComponent } from './admin/adminproducts/adminproducts.component';
 import { AddproductsComponent } from './admin/addproducts/addproducts.component';
 import { EditproductComponent } from './admin/editproduct/editproduct.component';
+import { NotfoundComponent } from './core/notfound/notfound.component';
 
 const routes: Routes = [
   { path: 'home', loadChildren: () => import('./core/core.module').then(m => m.CoreModule) },

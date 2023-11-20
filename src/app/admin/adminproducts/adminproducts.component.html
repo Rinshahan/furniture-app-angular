@@ -12,7 +12,7 @@
           class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
 
           <li>
-            <a class="nav-link px-0 align-middle">
+            <a routerLink="/adminhome" class="nav-link px-0 align-middle">
               <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
 
           </li>
@@ -28,16 +28,16 @@
             <a routerLink="/addproducts" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
               <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Add Product</span> </a>
           </li>
-          <li>
+          <!-- <li>
             <a class="nav-link px-0 align-middle">
               <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
-          </li>
+          </li> -->
         </ul>
         <hr>
         <div class="dropdown pb-4">
           <a class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1"
             data-bs-toggle="dropdown" aria-expanded="false">
-            <img alt="hugenerd" width="30" height="30" class="rounded-circle">
+            <img width="30" height="30" class="rounded-circle">
             <span class="d-none d-sm-inline mx-1">ADMIN</span>
           </a>
           <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
@@ -74,7 +74,7 @@
                     <td>{{ product.productdesc }}</td>
                     <td>{{ product.type }}</td>
                     <td>
-                      <button (click)="editProduct(product)" class="btn btn-primary">Edit</button>
+                      <button [routerLink]="'/editproduct/'+(product.productid)" class="btn btn-primary">Edit</button>
                       <br><br>
                       <button class="btn btn-danger" (click)="deleteProduct(product)">Delete</button>
                     </td>
@@ -86,36 +86,7 @@
         </div>
       </div>
 
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Edit Product</h5>
-          <form (ngSubmit)="saveChanges()">
-            <!-- Add form fields based on your Product model properties -->
-            <div class="mb-3">
-              <label for="productName" class="form-label">Product Name</label>
-              <input type="text" class="form-control" id="productName" name="productName"
-                [(ngModel)]="selectedProduct.productname" required>
-            </div>
-            <div class="mb-3">
-              <label for="productName" class="form-label">Product Description</label>
-              <input type="text" class="form-control" id="productdesc" name="productdesc"
-                [(ngModel)]="selectedProduct.productdesc" required>
-            </div>
-            <div class="mb-3">
-              <label for="productName" class="form-label">Product Price</label>
-              <input type="text" class="form-control" id="productdesc" name="productprice"
-                [(ngModel)]="selectedProduct.productprice" required>
-            </div>
-            <div class="mb-3">
-              <label for="productName" class="form-label">Product Type</label>
-              <input type="text" class="form-control" id="producttype" name="productprice"
-                [(ngModel)]="selectedProduct.type" required>
-            </div>
-            <!-- Add other form fields... -->
-            <button type="submit" class="btn btn-primary">Save Changes</button>
-          </form>
-        </div>
-      </div>
+
       <!-- Existing code below this line remains unchanged -->
 
 

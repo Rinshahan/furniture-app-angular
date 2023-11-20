@@ -23,12 +23,6 @@ export class AdminproductsComponent implements OnInit {
   deleteProduct(product: Product) {
     this.productService.deleteProduct(product.productid)
   }
-  editProduct(product: Product) {
-    this.selectedProduct = { ...product }
-  }
 
-  saveChanges() {
-
-  }
 
 }
