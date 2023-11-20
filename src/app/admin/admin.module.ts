@@ -8,10 +8,11 @@ import { SharedModule } from '../shared/shared.module';
 import { AdminusersComponent } from './adminusers/adminusers.component';
 import { AdminproductsComponent } from './adminproducts/adminproducts.component';
 import { AddproductsComponent } from './addproducts/addproducts.component';
+import { EditproductComponent } from './editproduct/editproduct.component';
 
 const routes: Routes = [
   { path: "", component: AdminloginComponent },
-
+  { path: 'editproduct/:id', component: EditproductComponent }
 ]
 
 @NgModule({
@@ -21,6 +22,7 @@ const routes: Routes = [
     AdminusersComponent,
     AdminproductsComponent,
     AddproductsComponent,
+    EditproductComponent,
 
   ],
   imports: [

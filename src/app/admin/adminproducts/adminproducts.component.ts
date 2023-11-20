@@ -11,6 +11,7 @@ import { ProductsService } from 'src/app/core/services/products.service';
 export class AdminproductsComponent implements OnInit {
   isSideBarCollapsed: boolean = false
   adminProducts: Product[]
+  selectedProduct: Product
   constructor(private productService: ProductsService, adminService: AdminService) { }
   ngOnInit(): void {
     this.adminProducts = this.productService.allproducts
@@ -22,4 +23,12 @@ export class AdminproductsComponent implements OnInit {
   deleteProduct(product: Product) {
     this.productService.deleteProduct(product.productid)
   }
+  editProduct(product: Product) {
+    this.selectedProduct = { ...product }
+  }
+
+  saveChanges() {
+
+  }
+
 }
