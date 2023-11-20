@@ -38,15 +38,30 @@
               <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
           </li> -->
         </ul>
-        <ul *ngIf="isSideBarCollapsed"></ul>
+        <ul *ngIf="isSideBarCollapsed"
+          class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start">
+          <li class="mt-5">
+            <a routerLink="/adminhome"><img class="navicon" src="../../../assets/sidenav/dashboard1.png" alt=""></a>
+          </li>
+          <li class="mt-5">
+            <a routerLink="/adminusers"><img class="navicon" src="../../../assets/sidenav/user1.png" alt=""></a>
+          </li>
+          <li class="mt-5">
+            <a routerLink="/adminproducts"><img class="navicon" src="../../../assets/sidenav/productlist2.png"
+                alt=""></a>
+          </li>
+          <li class="mt-5">
+            <a routerLink="/addproducts"><img class=" navicon" src="../../../assets/sidenav/addproduct1.png" alt=""></a>
+          </li>
+        </ul>
         <hr>
-        <div class="dropdown pb-4">
-          <a class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1"
+        <div class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start">
+          <!-- <a class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1"
             data-bs-toggle="dropdown" aria-expanded="false">
             <img width="30" height="30" class="rounded-circle">
             <span class="d-none d-sm-inline mx-1">ADMIN</span>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+          </a> -->
+          <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start">
             <li><a class="dropdown-item" routerLink="/userlogin">Sign out</a></li>
           </ul>
         </div>

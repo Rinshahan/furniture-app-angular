@@ -31,3 +31,10 @@
     display: block;
   }
 }
+
+.navicon {
+  margin-right: 100 px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+}
