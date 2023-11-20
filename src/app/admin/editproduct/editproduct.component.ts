@@ -24,6 +24,7 @@ export class EditproductComponent implements OnInit {
   saveChanges(): void {
     this.productService.updateProduct(this.productId, this.product)
     this.router.navigate(['/adminproducts'])
+
   }
 
 

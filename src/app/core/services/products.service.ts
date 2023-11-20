@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { timeout } from 'rxjs';
 import { Product } from 'src/app/core/models/products.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
+  constructor(private toast: ToastrService) { }
   allproducts: Product[] = [
     { productid: 7, type: `Bed`, productname: 'Cartlon Woodwine Bed', productdesc: `Experience the warmth and comfort of our luxurious down comforter. This comforter is filled with premium down and feathers, providing exceptional insulation and loft. The comforter is also available in a variety of weights to suit your climate and preferences.`, productprice: 17999, productimage: './../assets/products/cartlon woodwine bed.webp', quantity: 1 },
     { productid: 8, type: `Bed`, productname: 'Godrej V2.0 Bed', productdesc: `Upgrade your sleep experience with our luxurious Egyptian cotton sheets. These sheets are made from the finest cotton fibers, providing a soft, smooth, and breathable feel. The sheets are also available in a variety of colors and patterns to match your décor.`, productprice: 17999, productimage: './../assets/products/godrej v2.webp', quantity: 1 },
@@ -48,6 +51,7 @@ export class ProductsService {
     const index = this.allproducts.findIndex(product => product.productid === productId)
     if (index !== -1) {
       this.allproducts.splice(index, 1)
+      this.toast.warning("Product Deleted")
     }
   }
 
@@ -55,8 +59,9 @@ export class ProductsService {
     const index = this.allproducts.findIndex(product => product.productid === productId)
     if (index !== -1) {
       this.allproducts[index] = { ...updatedProduct }
+      this.toast.success("Product Updated")
     }
   }
-  constructor() { }
+
 }
 

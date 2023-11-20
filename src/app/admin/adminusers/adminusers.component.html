@@ -5,12 +5,15 @@
     <div [class.collapsed]="isSideBarCollapsed" class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
       <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
         <a class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-          <button class="btn btn-primary d-md-block d-lg-none" (click)="toggleSideBar()">
+          <!-- <button class="btn btn-primary d-md-block d-lg-none" (click)="toggleSideBar()">
+            <i class="fs-4 bi-list"></i>
+          </button> -->
+          <button class="btn btn-danger" (click)="toggleSideBar()">
             <i class="fs-4 bi-list"></i>
           </button>
           <span class="fs-5 d-none d-sm-inline"></span>
         </a>
-        <ul [ngClass]="{'expanded': !isSideBarCollapsed, 'collapsed': isSideBarCollapsed}"
+        <ul *ngIf="!isSideBarCollapsed" [ngClass]="{'expanded': !isSideBarCollapsed, 'collapsed': isSideBarCollapsed}"
           class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
           <!-- <li class="nav-item">
             <a href="#" class="nav-link align-middle px-0">
@@ -64,28 +67,31 @@
               </li>
             </ul> -->
           </li>
-          <!-- <li>
-            <a href="#" class="nav-link px-0 align-middle">
-              <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
-          </li> -->
+          <li>
+            <a routerLink="/adminlogin" class="nav-link px-0 align-middle">
+              <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Sign Out</span> </a>
+          </li>
         </ul>
-        <hr>
-        <div class="dropdown pb-4">
-          <a class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            <img width="30" height="30" class="rounded-circle">
-            <span class="d-none d-sm-inline mx-1">ADMIN</span>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-            <!-- <li><a class="dropd own-item" href="#">New project...</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li> -->
-            <li><a class="dropdown-item" routerLink="/userlogin">Sign out</a></li>
-          </ul>
-        </div>
+        <ul *ngIf="isSideBarCollapsed"
+          class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start">
+          <li class="mt-5">
+            <a routerLink="/adminhome"><img class="navicon" src="../../../assets/sidenav/dashboard1.png" alt=""></a>
+          </li>
+          <li class="mt-5">
+            <a routerLink="/adminusers"><img class="navicon" src="../../../assets/sidenav/user1.png" alt=""></a>
+          </li>
+          <li class="mt-5">
+            <a routerLink="/adminproducts"><img class="navicon" src="../../../assets/sidenav/productlist2.png"
+                alt=""></a>
+          </li>
+          <li class="mt-5">
+            <a routerLink="/addproducts"><img class=" navicon" src="../../../assets/sidenav/addproduct1.png" alt=""></a>
+          </li>
+          <li class="mt-5">
+            <a routerLink="/adminlogin"><img class=" navicon" src="../../../assets/sidenav/sign.jpg" alt=""></a>
+          </li>
+        </ul>
+
       </div>
     </div>
     <div class="col py-3">

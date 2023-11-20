@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { Product } from 'src/app/core/models/products.model';
 import { ProductsService } from 'src/app/core/services/products.service';
 
@@ -15,7 +16,7 @@ export class AddproductsComponent {
   @ViewChild('productForm') form: NgForm
   addedProducts: Product[] = []
 
-  constructor(private productService: ProductsService) { }
+  constructor(private productService: ProductsService, private toast: ToastrService) { }
 
   toggleSideBar(): void {
     this.isSideBarCollapsed = !this.isSideBarCollapsed;
@@ -25,6 +26,7 @@ export class AddproductsComponent {
     const addedProducts: Product = this.form.value
     console.log(addedProducts);
     this.productService.allproducts.push(addedProducts)
+    this.toast.success("Product Added ")
     this.form.reset()
   }
 }

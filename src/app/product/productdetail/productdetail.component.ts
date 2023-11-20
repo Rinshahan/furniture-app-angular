@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FilterService } from 'src/app/core/services/filter.service';
 import { Product } from 'src/app/core/models/products.model';
 import { UserService } from 'src/app/core/services/user.service';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-productdetail',
@@ -23,6 +24,7 @@ export class ProductdetailComponent implements OnInit {
 
   addToCart() {
     this.filterService.goToCart(parseInt(this.id))
+
   }
 
 }

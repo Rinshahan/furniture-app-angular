@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { user } from '../models/user.model';
 import { userlogin } from '../models/userlogin.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class UserService {
 
   showSearchBox: boolean = true
   showCart: boolean = true
-  constructor(private router: Router) {
+  constructor(private router: Router, private toaster: ToastrService) {
     const localdata = localStorage.getItem('signUpUsers');
     if (localdata != null) {
       this.user = JSON.parse(localdata);
@@ -30,7 +31,7 @@ export class UserService {
     //   } else {
     localStorage.setItem('signUpUsers', JSON.stringify(this.user))
     this.router.navigate(['userlogin'])
-
+    this.toaster.success("User Registered Successfully")
     //     this.router.navigate(['userlogin']);
     //     alert('User SignedUp Successfully');
     //   }
@@ -44,10 +45,10 @@ export class UserService {
 
     // const userExist = this.user.find(x => x.username === username && x.password === password)
     if (findUser.length === 0) {
-      alert('You are Not Registered')
+      this.toaster.error("Check Your Login Credentials")
     } else {
       this.router.navigate(['allproducts'])
-      alert('Login Success')
+      this.toaster.success("Login Success")
       this.isLogged = true
     }
   }

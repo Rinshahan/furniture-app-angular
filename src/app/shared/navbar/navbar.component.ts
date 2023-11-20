@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/core/services/user.service';
 
 
@@ -16,7 +17,7 @@ export class NavbarComponent implements OnInit {
 
   @Output()
   searchTextChanged: EventEmitter<string> = new EventEmitter<string>();
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private toast: ToastrService) {
   }
   ngOnInit(): void {
     this.showSearchBox = this.userService.showSearchBox
@@ -30,6 +31,9 @@ export class NavbarComponent implements OnInit {
     this.searchTextChanged.emit(this.searchData)
   }
 
+  logout() {
+    this.toast.warning("Logout Success")
+  }
   // searchProduct() {
   //   console.log(this.searchData);
   //   this.search.searchData = this.searchData

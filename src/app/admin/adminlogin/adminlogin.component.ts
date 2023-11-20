@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AdminService } from 'src/app/core/services/admin.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { AdminService } from 'src/app/core/services/admin.service';
 export class AdminloginComponent {
   @ViewChild('loginForm') form!: NgForm | undefined
 
-  constructor(private adminService: AdminService, private router: Router) { }
+  constructor(private adminService: AdminService, private router: Router, private toast: ToastrService) { }
 
 
 
@@ -24,9 +25,9 @@ export class AdminloginComponent {
       let password: number = this.form.value.password
       if (username == 'admin' && password == 123) {
         this.router.navigate(['/adminhome'])
-        alert("Admin Login Success")
+        this.toast.success("Admin Login Success")
       } else {
-        alert("Please Check Your Login Credentials")
+        this.toast.error("Please Check Your Login Credentials")
       }
       this.form.reset();
     }

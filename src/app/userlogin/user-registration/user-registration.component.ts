@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class UserRegistrationComponent implements OnInit {
   reactiveForm: FormGroup
   userServce: UserService = inject(UserService);
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private toast: ToastrService) { }
 
   ngOnInit(): void {
     this.reactiveForm = new FormGroup({

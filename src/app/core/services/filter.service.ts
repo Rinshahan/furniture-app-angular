@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Product } from 'src/app/core/models/products.model';
 import { ProductsService } from './products.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class FilterService {
   filteredProducts: Product[] = []
   viewedProduct: Product[] = []
   toCartProducts: Product[] = []
-  constructor(private productService: ProductsService) { }
+  constructor(private productService: ProductsService, private toast: ToastrService) { }
 
   filteringBeds(type: string) {
     const findProducts = this.productService.allproducts.filter(x => { return x.type === type })
@@ -26,9 +27,9 @@ export class FilterService {
     const productInCart = this.toCartProducts.find(x => x.productid === id)
     if (!productInCart) {
       this.toCartProducts.push(cartProduct[0])
-      alert("Product Added")
+      this.toast.success("Product Added")
     } else {
-      alert("Product Already exist")
+      this.toast.warning("Product Already exist")
     }
   }
 }
