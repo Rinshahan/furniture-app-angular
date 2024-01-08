@@ -86,6 +86,9 @@ export class ProductsService {
     return this.http.get<Product>(`http://localhost:9000/api/users/product/${id}`)
   }
 
+  getProductByCategory(type: string) {
+    return this.http.get<Product>(`http://localhost:9000/api/users/product/category/${type}`)
+  }
 
 }
 

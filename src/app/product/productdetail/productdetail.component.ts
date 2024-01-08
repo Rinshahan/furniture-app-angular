@@ -13,13 +13,14 @@ import { ProductsService } from 'src/app/core/services/products.service';
 })
 export class ProductdetailComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private userService: UserService, private filterService: FilterService, private productService: ProductsService) { }
-  product: Product[] = []
+  product: Product
   id: string;
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     console.log(this.id);
     this.productService.getProductById(this.id).subscribe((products) => {
-      console.log(products);
+      this.product = products.data.productById
+      console.log(this.product);
 
     })
     this.filterService.viewProducts(parseInt(this.id))
