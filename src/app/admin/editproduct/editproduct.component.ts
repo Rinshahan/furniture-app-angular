@@ -11,7 +11,7 @@ import { ProductsService } from 'src/app/core/services/products.service';
 export class EditproductComponent implements OnInit {
   isSideBarCollapsed: boolean = false
   productId: number
-  product: Product
+  product
   constructor(private activatedRoute: ActivatedRoute, private productService: ProductsService, private router: Router) { }
 
   ngOnInit(): void {

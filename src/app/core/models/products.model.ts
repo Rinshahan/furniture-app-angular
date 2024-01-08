@@ -1,9 +1,10 @@
-export class Product {
-  productid: number;
-  type: string;
-  productname: string;
-  productdesc: string;
-  productprice: number;
-  productimage: string;
-  quantity: number = 1
+export interface Product {
+  data?: any;
+  _id?: string
+  title: String,
+  description: string,
+  price: string,
+  image: string,
+  category: string,
+  isDeleted?: string
 }

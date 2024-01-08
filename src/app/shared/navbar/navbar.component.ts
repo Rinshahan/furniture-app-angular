@@ -15,8 +15,7 @@ export class NavbarComponent implements OnInit {
   loggedIn: boolean;
   searchData: string = '';
 
-  @Output()
-  searchTextChanged: EventEmitter<string> = new EventEmitter<string>();
+  @Output() searchTextChanged: EventEmitter<string> = new EventEmitter<string>();
   constructor(private userService: UserService, private toast: ToastrService) {
   }
   ngOnInit(): void {
@@ -24,7 +23,6 @@ export class NavbarComponent implements OnInit {
     this.showCart = this.userService.showCart
     this.loggedIn = this.userService.isLogged
     console.log(this.searchData);
-
   }
 
   onSearchTextChanged() {

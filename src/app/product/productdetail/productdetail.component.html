@@ -6,7 +6,7 @@
         <div class="preview col-md-6">
 
           <div class="preview-pic tab-content">
-            <div class="tab-pane active" id="pic-1"><img [src]="product.productimage" /></div>
+            <div class="tab-pane active" id="pic-1"><img [src]="product.image" /></div>
             <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252" /></div>
             <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>
             <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
@@ -23,7 +23,7 @@
 
         </div>
         <div class="details col-md-6 right-section">
-          <h3 class="product-title">{{product.productname}}</h3>
+          <h3 class="product-title">{{product.title}}</h3>
           <div class="rating">
             <div class="stars">
               <span class="fa fa-star checked"></span>
@@ -34,8 +34,8 @@
             </div>
             <span class="review-no">41 reviews</span>
           </div>
-          <p class="product-description">{{product.productdesc}}</p>
-          <h4 class="price">current price : <span>{{product.productprice|currency:'INR'}}</span></h4>
+          <p class="product-description">{{product.description}}</p>
+          <h4 class="price">current price : <span>{{product.price|currency:'INR'}}</span></h4>
           <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
           <!-- <h5 class="sizes">sizes:
             <span class="size" data-toggle="tooltip" title="small">s</span>

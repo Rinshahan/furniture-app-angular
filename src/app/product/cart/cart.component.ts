@@ -13,7 +13,7 @@ import { ToastrModule } from 'ngx-toastr';
 export class CartComponent implements OnInit, OnChanges {
   totalPrice = 0;
   totalQuantity = 0
-  cartProducts: Product[] = []
+  cartProducts = []
   constructor(private userService: UserService, private filterService: FilterService) {
   }
   ngOnInit(): void {

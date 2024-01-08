@@ -8,7 +8,7 @@ import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { ToastrModule } from 'ngx-toastr';
-
+import { HttpClientModule } from '@angular/common/http'
 
 
 @NgModule({
@@ -21,6 +21,7 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserAnimationsModule,
     CoreModule,
     SharedModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 3000,

@@ -4,6 +4,7 @@ import { FilterService } from 'src/app/core/services/filter.service';
 import { Product } from 'src/app/core/models/products.model';
 import { UserService } from 'src/app/core/services/user.service';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { ProductsService } from 'src/app/core/services/products.service';
 
 @Component({
   selector: 'app-productdetail',
@@ -11,13 +12,18 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
   styleUrls: ['./productdetail.component.css']
 })
 export class ProductdetailComponent implements OnInit {
-  constructor(private activatedRoute: ActivatedRoute, private userService: UserService, private filterService: FilterService) { }
+  constructor(private activatedRoute: ActivatedRoute, private userService: UserService, private filterService: FilterService, private productService: ProductsService) { }
   product: Product[] = []
   id: string;
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
+    console.log(this.id);
+    this.productService.getProductById(this.id).subscribe((products) => {
+      console.log(products);
+
+    })
     this.filterService.viewProducts(parseInt(this.id))
-    this.product = this.filterService.viewedProduct;
+    //this.product = this.filterService.viewedProduct;
     this.userService.showSearchBox = false
     this.userService.showCart = true
   }

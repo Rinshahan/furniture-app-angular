@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Cloudinary } from '@cloudinary/url-gen';
 import { Product } from 'src/app/core/models/products.model';
 import { AdminService } from 'src/app/core/services/admin.service';
 import { ProductsService } from 'src/app/core/services/products.service';
@@ -10,18 +11,21 @@ import { ProductsService } from 'src/app/core/services/products.service';
 })
 export class AdminproductsComponent implements OnInit {
   isSideBarCollapsed: boolean = false
-  adminProducts: Product[]
+  adminProducts: Product[] = []
   selectedProduct: Product
   constructor(private productService: ProductsService, adminService: AdminService) { }
-  ngOnInit(): void {
-    this.adminProducts = this.productService.allproducts
+  ngOnInit() {
+
+    this.productService.getAllProduct().subscribe((products) => {
+      this.adminProducts = products.data.allProducts
+    })
   }
   toggleSideBar(): void {
     this.isSideBarCollapsed = !this.isSideBarCollapsed;
   }
 
   deleteProduct(product: Product) {
-    this.productService.deleteProduct(product.productid)
+    //this.productService.deleteProduct(product.productid)
   }
 
 

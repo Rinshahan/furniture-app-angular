@@ -8,9 +8,9 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class FilterService {
   disable: boolean = false
-  filteredProducts: Product[] = []
-  viewedProduct: Product[] = []
-  toCartProducts: Product[] = []
+  filteredProducts = []
+  viewedProduct = []
+  toCartProducts = []
   constructor(private productService: ProductsService, private toast: ToastrService) { }
 
   filteringBeds(type: string) {

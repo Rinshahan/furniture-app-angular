@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Product } from 'src/app/core/models/products.model';
+
 import { ProductsService } from 'src/app/core/services/products.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class AddproductsComponent {
   isSideBarCollapsed: boolean = false
 
   @ViewChild('productForm') form: NgForm
-  addedProducts: Product[] = []
+  addedProducts = []
 
   constructor(private productService: ProductsService, private toast: ToastrService) { }
 
@@ -23,9 +24,16 @@ export class AddproductsComponent {
   }
 
   onFormSubmitted() {
-    const addedProducts: Product = this.form.value
+    const addedProducts = {
+      title: this.form.value.title,
+      description: this.form.value.description,
+      price: this.form.value.price,
+      image: this.form.value.image,
+      category: this.form.value.category,
+    };
     console.log(addedProducts);
-    this.productService.allproducts.push(addedProducts)
+
+    this.productService.addProduct(addedProducts)
     this.toast.success("Product Added ")
     this.form.reset()
   }

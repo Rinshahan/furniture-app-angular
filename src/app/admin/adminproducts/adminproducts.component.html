@@ -79,13 +79,13 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let product of adminProducts">
-                    <td><img class="image" [src]="product.productimage" class="card-img-top"></td>
-                    <td>{{ product.productname }}</td>
-                    <td>{{ product.productprice | currency:'INR' }}</td>
-                    <td>{{ product.productdesc }}</td>
-                    <td>{{ product.type }}</td>
+                    <td><img class="image" [src]="product.image" class="card-img-top"></td>
+                    <td>{{ product.title }}</td>
+                    <td>{{ product.price | currency:'INR' }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.category }}</td>
                     <td>
-                      <button [routerLink]="'/editproduct/'+(product.productid)" class="btn btn-primary">Edit</button>
+                      <button [routerLink]="'/editproduct/'+(product._id)" class="btn btn-primary">Edit</button>
                       <br><br>
                       <button class="btn btn-danger" (click)="deleteProduct(product)">Delete</button>
                     </td>
@@ -96,11 +96,7 @@
           </div>
         </div>
       </div>
-
-
       <!-- Existing code below this line remains unchanged -->
-
-
     </div>
   </div>
 </div>

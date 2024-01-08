@@ -1,14 +1,16 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { timeout } from 'rxjs';
-import { Product } from 'src/app/core/models/products.model';
+import { Product } from '../models/products.model';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
-  constructor(private toast: ToastrService) { }
-  allproducts: Product[] = [
+  allProduct: Product[] = []
+  constructor(private toast: ToastrService, private http: HttpClient) { }
+  allproducts = [
     { productid: 7, type: `Bed`, productname: 'Cartlon Woodwine Bed', productdesc: `Experience the warmth and comfort of our luxurious down comforter. This comforter is filled with premium down and feathers, providing exceptional insulation and loft. The comforter is also available in a variety of weights to suit your climate and preferences.`, productprice: 17999, productimage: './../assets/products/cartlon woodwine bed.webp', quantity: 1 },
     { productid: 8, type: `Bed`, productname: 'Godrej V2.0 Bed', productdesc: `Upgrade your sleep experience with our luxurious Egyptian cotton sheets. These sheets are made from the finest cotton fibers, providing a soft, smooth, and breathable feel. The sheets are also available in a variety of colors and patterns to match your décor.`, productprice: 17999, productimage: './../assets/products/godrej v2.webp', quantity: 1 },
     { productid: 9, type: `Bed`, productname: 'Metallika Bed', productdesc: `Enjoy the comfort and support of our bamboo pillows. These pillows are filled with shredded bamboo, providing a cool, breathable feel. The pillows are also hypoallergenic, making them ideal for allergy sufferers.`, productprice: 17999, productimage: './../assets/products/metallika.webp', quantity: 1 },
@@ -47,21 +49,43 @@ export class ProductsService {
     { productid: 32, type: `Dining`, productname: `Wood Foldable Table`, productdesc: `Make a bold statement in your dining room with our industrial-chic concrete dining table. This table features a durable concrete top that is both stylish and functional. The concrete top is easy to clean and maintain, making it a great choice for everyday use.`, productprice: 12890, productimage: `./../assets/products/diningtables/foldable.webp`, quantity: 1 },
   ]
 
+  addProduct(products) {
+    const headers: HttpHeaders = new HttpHeaders().set('Content-Type', 'application/json; boundary=<calculated when request is sent>')
+    this.http.post<Product>('http://localhost:9000/api/admin/products', products, { headers: headers })
+      .subscribe((res) => {
+        console.log(res);
+      }, (err) => {
+        console.log(err);
+      }
+      )
+  }
+
   deleteProduct(productId: number): void {
-    const index = this.allproducts.findIndex(product => product.productid === productId)
-    if (index !== -1) {
-      this.allproducts.splice(index, 1)
-      this.toast.warning("Product Deleted")
-    }
+    //const index = this.allproducts.findIndex(product => product.productid === productId)
+    // if (index !== -1) {
+    //   this.allproducts.splice(index, 1)
+    //   this.toast.warning("Product Deleted")
+    // }
   }
 
   updateProduct(productId: number, updatedProduct: Product): void {
     const index = this.allproducts.findIndex(product => product.productid === productId)
     if (index !== -1) {
-      this.allproducts[index] = { ...updatedProduct }
+      //this.allproducts[index] = { ...updatedProduct }
       this.toast.success("Product Updated")
     }
   }
+
+
+  getAllProduct() {
+    const headers: HttpHeaders = new HttpHeaders().set('Content-Type', 'application/json')
+    return this.http.get<Product>('http://localhost:9000/api/admin/products')
+  }
+
+  getProductById(id: string) {
+    return this.http.get<Product>(`http://localhost:9000/api/users/product/${id}`)
+  }
+
 
 }
 
