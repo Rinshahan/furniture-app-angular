@@ -1,6 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { user } from 'src/app/core/models/user.model';
 import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
@@ -9,9 +11,10 @@ import { UserService } from 'src/app/core/services/user.service';
   styleUrls: ['./user-login.component.css']
 })
 export class UserLoginComponent {
+  user
   @ViewChild('loginForm') form!: NgForm | undefined
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private toast: ToastrService) { }
 
   // ngOnInit(): void {
   //   const localdata = localStorage.getItem("signUpUsers");
@@ -24,15 +27,17 @@ export class UserLoginComponent {
 
 
   onFormSubmitted() {
-    if (this.form) {
-      console.log(this.form);
-      const formvalue = this.form.value
-      let username: string = this.form.value.username
-      let password: string = this.form.value.password
-      this.userService.userlogin.push(formvalue)
-      this.userService.login(username, password);
-      this.form.reset();
-    }
+    let username = this.form.value.username
+    let password = this.form.value.password
+    this.user = { username, password }
+    this.userService.login(this.user).subscribe((res) => {
+      this.router.navigate(['allproducts'])
+      this.toast.success("Success")
+    }, (err) => {
+      console.log(err);
+
+    })
+    this.form.reset();
   }
 }
 

@@ -17,17 +17,23 @@ export class UserRegistrationComponent implements OnInit {
 
   ngOnInit(): void {
     this.reactiveForm = new FormGroup({
-      email: new FormControl(null, [Validators.email, Validators.required]),
       username: new FormControl(null, Validators.required),
+      email: new FormControl(null, [Validators.email, Validators.required]),
       password: new FormControl(null, Validators.required)
     })
   }
 
   onFormSubmitted() {
-    console.log(this.reactiveForm);
+    console.log(this.reactiveForm.value);
     const formvalue = this.reactiveForm.value
-    this.userServce.user.push(formvalue);
-    this.userServce.signUp()
+
+    this.userServce.signUp(formvalue).subscribe((res) => {
+      const token = (res as { token: string }).token
+      console.log(token);
+      localStorage.setItem('token', JSON.stringify(token))
+      this.router.navigate(['userlogin'])
+      this.toast.success("User Registered Successfully")
+    })
     this.reactiveForm.reset({
       email: null,
       username: null,
