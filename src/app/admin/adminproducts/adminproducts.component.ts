@@ -15,7 +15,6 @@ export class AdminproductsComponent implements OnInit {
   selectedProduct: Product
   constructor(private productService: ProductsService, adminService: AdminService) { }
   ngOnInit() {
-
     this.productService.getAllProduct().subscribe((products) => {
       this.adminProducts = products.data.allProducts
     })
@@ -25,7 +24,14 @@ export class AdminproductsComponent implements OnInit {
   }
 
   deleteProduct(product: Product) {
-    //this.productService.deleteProduct(product.productid)
+    this.productService.deleteProduct(product._id).subscribe((res) => {
+      console.log(res);
+      this.productService.getAllProduct().subscribe((products) => {
+        this.adminProducts = products.data.allProducts
+      })
+    }, (err) => {
+      console.log(err);
+    })
   }
 
 

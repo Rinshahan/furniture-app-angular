@@ -63,27 +63,23 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Edit Product</h5>
-          <form (ngSubmit)="saveChanges()">
+          <form (ngSubmit)="saveChanges()" #productForm="ngForm">
             <!-- Add form fields based on your Product model properties -->
             <div class="mb-3">
               <label for="productName" class="form-label">Product Name</label>
-              <input type="text" class="form-control" id="productName" name="productName"
-                [(ngModel)]="product.productname" required>
+              <input type="text" class="form-control" id="productName" name="title" ngModel required>
             </div>
             <div class="mb-3">
               <label for="productName" class="form-label">Product Description</label>
-              <input type="text" class="form-control" id="productdesc" name="productdesc"
-                [(ngModel)]="product.productdesc" required>
+              <input type="text" class="form-control" id="productdesc" name="description" ngModel required>
             </div>
             <div class="mb-3">
               <label for="productName" class="form-label">Product Price</label>
-              <input type="text" class="form-control" id="productdesc" name="productprice"
-                [(ngModel)]="product.productprice" required>
+              <input type="text" class="form-control" id="productdesc" name="price" ngModel required>
             </div>
             <div class="mb-3">
               <label for="productName" class="form-label">Product Type</label>
-              <input type="text" class="form-control" id="producttype" name="productprice" [(ngModel)]="product.type"
-                required>
+              <input type="text" class="form-control" id="category" name="category" ngModel required>
             </div>
             <!-- Add other form fields... -->
             <button type="submit" class="btn btn-primary">Save Changes</button>

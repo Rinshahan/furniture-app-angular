@@ -1,3 +1,4 @@
+
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
@@ -28,12 +29,12 @@ export class AddproductsComponent {
       title: this.form.value.title,
       description: this.form.value.description,
       price: this.form.value.price,
-      image: this.form.value.image,
+      image: null,
       category: this.form.value.category,
     };
-    console.log(addedProducts);
 
-    this.productService.addProduct(addedProducts)
+    const imageFile: File = this.form.value.image
+    this.productService.addProduct(addedProducts, imageFile)
     this.toast.success("Product Added ")
     this.form.reset()
   }

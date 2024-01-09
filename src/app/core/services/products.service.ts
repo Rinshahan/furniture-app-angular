@@ -49,9 +49,17 @@ export class ProductsService {
     { productid: 32, type: `Dining`, productname: `Wood Foldable Table`, productdesc: `Make a bold statement in your dining room with our industrial-chic concrete dining table. This table features a durable concrete top that is both stylish and functional. The concrete top is easy to clean and maintain, making it a great choice for everyday use.`, productprice: 12890, productimage: `./../assets/products/diningtables/foldable.webp`, quantity: 1 },
   ]
 
-  addProduct(products) {
-    const headers: HttpHeaders = new HttpHeaders().set('Content-Type', 'application/json; boundary=<calculated when request is sent>')
-    this.http.post<Product>('http://localhost:9000/api/admin/products', products, { headers: headers })
+  addProduct(products: Product, image: File) {
+    const formData: FormData = new FormData();
+    formData.append('title', products.title.toString())
+    formData.append('description', products.description)
+    formData.append('price', products.price.toString())
+    formData.append('image', image)
+    formData.append('category', products.category)
+
+    const headers: HttpHeaders = new HttpHeaders();
+
+    this.http.post<Product>('http://localhost:9000/api/admin/products', formData, { headers })
       .subscribe((res) => {
         console.log(res);
       }, (err) => {
@@ -60,21 +68,6 @@ export class ProductsService {
       )
   }
 
-  deleteProduct(productId: number): void {
-    //const index = this.allproducts.findIndex(product => product.productid === productId)
-    // if (index !== -1) {
-    //   this.allproducts.splice(index, 1)
-    //   this.toast.warning("Product Deleted")
-    // }
-  }
-
-  updateProduct(productId: number, updatedProduct: Product): void {
-    const index = this.allproducts.findIndex(product => product.productid === productId)
-    if (index !== -1) {
-      //this.allproducts[index] = { ...updatedProduct }
-      this.toast.success("Product Updated")
-    }
-  }
 
 
   getAllProduct() {
@@ -88,6 +81,14 @@ export class ProductsService {
 
   getProductByCategory(type: string) {
     return this.http.get<Product>(`http://localhost:9000/api/users/product/category/${type}`)
+  }
+
+  deleteProduct(id: string) {
+    return this.http.delete<Product>(`http://localhost:9000/api/users/product/${id}`)
+  }
+
+  updateProduct(id: string, body: Product) {
+    return this.http.patch<Product>(`http://localhost:9000/api/users/product/${id}`, body)
   }
 
 }

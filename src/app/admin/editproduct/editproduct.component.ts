@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/core/models/products.model';
 import { ProductsService } from 'src/app/core/services/products.service';
@@ -10,19 +11,24 @@ import { ProductsService } from 'src/app/core/services/products.service';
 })
 export class EditproductComponent implements OnInit {
   isSideBarCollapsed: boolean = false
-  productId: number
-  product
+  @ViewChild('productForm') form: NgForm
+  productId: string
   constructor(private activatedRoute: ActivatedRoute, private productService: ProductsService, private router: Router) { }
-
+  product: Product
   ngOnInit(): void {
-    this.productId = +this.activatedRoute.snapshot.paramMap.get('id')
-    this.product = this.productService.allproducts.find(product => product.productid === this.productId)
-    console.log(this.productId);
-
+    this.productId = this.activatedRoute.snapshot.paramMap.get('id')
+    this.productService.getProductById(this.productId).subscribe((res) => {
+      this.product = res.data.productById
+    })
   }
 
   saveChanges(): void {
-    this.productService.updateProduct(this.productId, this.product)
+    this.product = this.form.value
+    this.productService.updateProduct(this.productId, this.product).subscribe((updatedProduct) => {
+      console.log(updatedProduct);
+    }, (err) => {
+      console.log(err);
+    })
     this.router.navigate(['/adminproducts'])
 
   }
