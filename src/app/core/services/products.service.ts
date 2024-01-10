@@ -2,6 +2,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Product } from '../models/products.model';
+import { Observable } from 'rxjs';
+import { UserService } from './user.service';
+import { ApiResponse } from '../models/api.model';
 
 
 @Injectable({
@@ -69,26 +72,40 @@ export class ProductsService {
   }
 
 
-
-  getAllProduct() {
+  getAllProduct(): Observable<Product> {
     const headers: HttpHeaders = new HttpHeaders().set('Content-Type', 'application/json')
-    return this.http.get<Product>('http://localhost:9000/api/admin/products')
+    return this.http.get<Product>('http://localhost:9000/api/users/products')
   }
 
-  getProductById(id: string) {
+  getProductById(id: string): Observable<Product> {
     return this.http.get<Product>(`http://localhost:9000/api/users/product/${id}`)
   }
 
-  getProductByCategory(type: string) {
+  getProductByCategory(type: string): Observable<Product> {
     return this.http.get<Product>(`http://localhost:9000/api/users/product/category/${type}`)
   }
 
-  deleteProduct(id: string) {
+  deleteProduct(id: string): Observable<Product> {
     return this.http.delete<Product>(`http://localhost:9000/api/users/product/${id}`)
   }
 
-  updateProduct(id: string, body: Product) {
+  updateProduct(id: string, body: Product): Observable<Product> {
     return this.http.patch<Product>(`http://localhost:9000/api/users/product/${id}`, body)
+  }
+
+  getCart(id: string): Observable<Object> {
+    return this.http.get(`http://localhost:9000/api/users/${id}/cart`)
+  }
+
+  deleteProductCart(userId: string, productId) {
+    console.log(productId);
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      body: { productId: productId }
+    }
+    return this.http.delete(`http://localhost:9000/api/users/${userId}/cart`, options)
   }
 
 }

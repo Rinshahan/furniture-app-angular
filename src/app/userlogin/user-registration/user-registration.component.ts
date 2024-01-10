@@ -30,7 +30,7 @@ export class UserRegistrationComponent implements OnInit {
     this.userServce.signUp(formvalue).subscribe((res) => {
       const token = (res as { token: string }).token
       console.log(token);
-      localStorage.setItem('token', JSON.stringify(token))
+      localStorage.removeItem('token')
       this.router.navigate(['userlogin'])
       this.toast.success("User Registered Successfully")
     })

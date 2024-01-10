@@ -12,6 +12,7 @@ import { UserService } from 'src/app/core/services/user.service';
 })
 export class UserLoginComponent {
   user
+  userId: string
   @ViewChild('loginForm') form!: NgForm | undefined
 
   constructor(private userService: UserService, private router: Router, private toast: ToastrService) { }
@@ -27,15 +28,21 @@ export class UserLoginComponent {
 
 
   onFormSubmitted() {
-    let username = this.form.value.username
-    let password = this.form.value.password
+    let username: string = this.form.value.username
+    let password: string = this.form.value.password
     this.user = { username, password }
     this.userService.login(this.user).subscribe((res) => {
+      const userId: string = (res as { user: user }).user._id
+      this.userId = userId
+      this.userService.userId = this.userId
+      const token = (res as { token: string }).token
+      localStorage.setItem('token', token)
       this.router.navigate(['allproducts'])
       this.toast.success("Success")
+      this.userService.isLogged = true
     }, (err) => {
       console.log(err);
-
+      this.toast.info(err.message)
     })
     this.form.reset();
   }

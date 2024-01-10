@@ -13,17 +13,12 @@ export class UserService {
   showSearchBox: boolean = true
   showCart: boolean = true
   constructor(private router: Router, private toaster: ToastrService, private http: HttpClient) {
-    const localdata = localStorage.getItem('signUpUsers');
-    if (localdata != null) {
-      this.user = JSON.parse(localdata);
-    }
+
   }
-  //signUpdatas: user[] = []
-  logindatas: object[] = []
   user: user[] = []
   userlogin: userlogin[] = []
   isLogged: boolean = false
-
+  userId: string
   signUp(userData: user) {
     return this.http.post('http://localhost:9000/api/users/register', userData)
 
@@ -31,6 +26,7 @@ export class UserService {
 
   login(userData) {
     return this.http.post('http://localhost:9000/api/users/login', userData)
+
   }
 
 

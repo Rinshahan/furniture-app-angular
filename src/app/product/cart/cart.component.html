@@ -18,35 +18,36 @@
                     *ngFor="let product of cartProducts">
 
                     <div class="col-md-2 col-lg-2 col-xl-2">
-                      <img [src]="product.productimage" class="img-fluid rounded-3" alt="Cotton T-shirt">
+                      <img [src]="product.data.productById.image" class="img-fluid rounded-3" alt="Cotton T-shirt">
                     </div>
                     <div class="col-md-3 col-lg-3 col-xl-3">
-                      <h6 class="text-muted">{{product.type}}</h6>
-                      <h6 class="text-black mb-0">{{product.productname}}</h6>
+                      <h6 class="text-muted">{{product.data.productById.category}}</h6>
+                      <h6 class="text-black mb-0">{{product.data.productById.title}}</h6>
                     </div>
-                    <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                      <input id="form1" min="1" [(ngModel)]="product.quantity" (change)="updateTotalPrice()"
+                    <!-- <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                      <input id="form1" min="1" [(ngModel)]="product" (change)="updateTotalPrice()"
                         name="quantity" value="0" type="number" class="form-control form-control-sm"
                         style="width: 50px;" />
-                      <!-- <button class="btn btn-link px-2"
+                       <button class="btn btn-link px-2"
                         onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                         <i class="fas fa-minus"></i>
                       </button> -->
 
-                      <!-- <input id="form1" min="0" name="quantity" value="1" type="number"
-                        class="form-control form-control-sm" /> -->
+                    <!-- <input id="form1" min="0" name="quantity" value="1" type="number"
+                        class="form-control form-control-sm" /> 
 
                       <button class="btn btn-link px-2"
                         onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                         <i class="fas fa-plus"></i>
                       </button>
-                    </div>
+                    </div> -->
                     <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                      <h6 class="mb-0">{{product.productprice * product.quantity | currency : 'INR'}}</h6>
+                      <h6 class="mb-0">{{product.data.productById.price | currency : 'INR'}}</h6>
                     </div>
                     <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                       <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
-                      <button class="btn btn-danger" (click)="deleteProduct(product)">Delete</button>
+                      <button class="btn btn-danger"
+                        (click)="deleteProduct(product.data.productById._id)">Delete</button>
                     </div>
 
                   </div>
