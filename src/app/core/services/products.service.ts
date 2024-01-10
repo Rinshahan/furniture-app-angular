@@ -93,12 +93,17 @@ export class ProductsService {
     return this.http.patch<Product>(`http://localhost:9000/api/users/product/${id}`, body)
   }
 
-  getCart(id: string): Observable<Object> {
-    return this.http.get(`http://localhost:9000/api/users/${id}/cart`)
+  getCart(userId: string): Observable<Object> {
+    return this.http.get(`http://localhost:9000/api/users/${userId}/cart`)
   }
 
-  deleteProductCart(userId: string, productId) {
-    console.log(productId);
+  addProductToCart(userId: string, productId: string) {
+    const options = { productId: productId }
+    return this.http.post(`http://localhost:9000/api/users/${userId}/cart`, options)
+  }
+
+  deleteProductCart(userId: string, productId: string): Observable<Object> {
+
     const options = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'

@@ -26,7 +26,6 @@ export class CartComponent implements OnInit, OnChanges {
     this.userService.showSearchBox = false;
     this.userService.showCart = false
     this.userId = this.userService.userId
-    console.log(this.userId);
     this.productService.getCart(this.userId).subscribe((res: ApiResponse) => {
       const productIds = res.data.getCart.product;
       this.fetchProductDetails(productIds)
@@ -54,15 +53,23 @@ export class CartComponent implements OnInit, OnChanges {
   }
 
   deleteProduct(productId) {
-    console.log(productId);
+    const indexToDelete = this.cartProducts.findIndex(product => product._id == productId)
+    console.log();
+
+
     this.productService.deleteProductCart(this.userId, productId)
-    // .subscribe((res) => {
-    //   console.log(res);
-    //   this.toast.success("Product Deleted")
-    // }, (err) => {
-    //   console.log(err);
-    //   this.toast.error("Something went Wrong")
-    // })
+      .subscribe((res) => {
+        console.log(res);
+        this.toast.success("Product Deleted")
+        if (indexToDelete !== -1) {
+          this.cartProducts.splice(indexToDelete, 1)
+          //this.totalPrice -= this.cartProducts[indexToDelete].price
+        }
+      }, (err) => {
+        console.log(err);
+        this.toast.error("Something went Wrong")
+      })
+
   }
 
 
