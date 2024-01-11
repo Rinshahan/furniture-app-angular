@@ -10,8 +10,10 @@ export class HomePageComponent implements OnInit {
 
   constructor(private userService: UserService) { }
   ngOnInit(): void {
+    if (this.userService.isLogged) {
+      this.userService.showCart = true
+    }
     this.userService.showSearchBox = false
-    this.userService.showCart = false
-    this.userService.isLogged
+
   }
 }

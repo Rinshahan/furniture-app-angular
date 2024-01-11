@@ -103,7 +103,6 @@ export class ProductsService {
   }
 
   deleteProductCart(userId: string, productId: string): Observable<Object> {
-
     const options = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'

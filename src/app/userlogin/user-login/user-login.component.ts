@@ -17,13 +17,12 @@ export class UserLoginComponent {
 
   constructor(private userService: UserService, private router: Router, private toast: ToastrService) { }
 
-  // ngOnInit(): void {
-  //   const localdata = localStorage.getItem("signUpUsers");
-  //   if (localdata != null) {
-  //     this.userService.signUpdatas = JSON.parse(localdata)
-  //   }
-  //   console.log(localdata);
-  // }
+  ngOnInit(): void {
+    const token = localStorage.getItem('token')
+    if (token) {
+      this.userService.isLogged = true
+    }
+  }
 
 
 

@@ -29,7 +29,9 @@ export class UserService {
 
   }
 
-
+  logout() {
+    return this.http.get('http://localhost:9000/api/users/logout')
+  }
 
 }
 

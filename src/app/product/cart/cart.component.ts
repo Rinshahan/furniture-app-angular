@@ -32,8 +32,8 @@ export class CartComponent implements OnInit, OnChanges {
       this.totalPrice = res.data.totalPrice
     }, (err) => {
       console.log(err);
+      this.toast.error(err.error.message)
     })
-
 
   }
 
@@ -41,7 +41,7 @@ export class CartComponent implements OnInit, OnChanges {
     //use forkjoin to fetch details for all products concurrently
     const productRequests = productIds.map(productId => this.productService.getProductById(productId))
     forkJoin(productRequests).subscribe((products: Product[]) => {
-      this.cartProducts = products
+      this.cartProducts = products.map(product => product.data.productById)
       console.log(this.cartProducts);
     }, (err) => {
       console.log(err);
@@ -53,21 +53,17 @@ export class CartComponent implements OnInit, OnChanges {
   }
 
   deleteProduct(productId) {
-    const indexToDelete = this.cartProducts.findIndex(product => product._id == productId)
-    console.log();
-
-
+    const indexToDelete: number = this.cartProducts.findIndex((product) => product._id === productId)
     this.productService.deleteProductCart(this.userId, productId)
       .subscribe((res) => {
-        console.log(res);
         this.toast.success("Product Deleted")
         if (indexToDelete !== -1) {
+          this.totalPrice -= (this.cartProducts[indexToDelete].price as unknown as number)
           this.cartProducts.splice(indexToDelete, 1)
-          //this.totalPrice -= this.cartProducts[indexToDelete].price
         }
       }, (err) => {
         console.log(err);
-        this.toast.error("Something went Wrong")
+        this.toast.error(err.error.message)
       })
 
   }

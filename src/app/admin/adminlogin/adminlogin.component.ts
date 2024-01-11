@@ -19,16 +19,16 @@ export class AdminloginComponent {
 
   onFormSubmitted() {
     if (this.form) {
-      console.log(this.form);
-      const formvalue = this.form.value
       let username: string = this.form.value.username
-      let password: number = this.form.value.password
-      if (username == 'admin' && password == 123) {
+      let password: string = this.form.value.password
+      this.adminService.adminLogin(username, password).subscribe((res) => {
+        const token = (res as { token: string }).token
+        localStorage.setItem('adminToken', token)
         this.router.navigate(['/adminhome'])
         this.toast.success("Admin Login Success")
-      } else {
-        this.toast.error("Please Check Your Login Credentials")
-      }
+      }, (err) => {
+        this.toast.error(err.error.message)
+      })
       this.form.reset();
     }
   }

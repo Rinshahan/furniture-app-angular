@@ -30,7 +30,13 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
-    this.toast.warning("Logout Success")
+    this.userService.logout().subscribe((res) => {
+      this.toast.success("Logged Out")
+      localStorage.removeItem('token')
+      this.userService.isLogged = false
+    }, (err) => {
+      this.toast.error(err.error.message)
+    })
   }
   // searchProduct() {
   //   console.log(this.searchData);

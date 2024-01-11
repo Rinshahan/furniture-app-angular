@@ -15,6 +15,7 @@ import { AdminproductsComponent } from './admin/adminproducts/adminproducts.comp
 import { AddproductsComponent } from './admin/addproducts/addproducts.component';
 import { EditproductComponent } from './admin/editproduct/editproduct.component';
 import { NotfoundComponent } from './core/notfound/notfound.component';
+import { adminGuard } from './core/guards/admin.guard';
 
 const routes: Routes = [
   { path: 'home', loadChildren: () => import('./core/core.module').then(m => m.CoreModule) },
@@ -28,10 +29,10 @@ const routes: Routes = [
   { path: 'productview/:id', component: ProductdetailComponent, canActivate: [authGuard] },
   { path: 'adminlogin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
   { path: 'adminhome', component: AdminhomeComponent },
-  { path: 'adminusers', component: AdminusersComponent },
-  { path: 'adminproducts', component: AdminproductsComponent },
-  { path: 'addproducts', component: AddproductsComponent },
-  { path: 'editproduct/:id', component: EditproductComponent },
+  { path: 'adminusers', component: AdminusersComponent, canActivate: [adminGuard] },
+  { path: 'adminproducts', component: AdminproductsComponent, canActivate: [adminGuard] },
+  { path: 'addproducts', component: AddproductsComponent, canActivate: [adminGuard] },
+  { path: 'editproduct/:id', component: EditproductComponent, canActivate: [adminGuard] },
   { path: 'cart', component: CartComponent },
   { path: '**', component: NotfoundComponent }
 
