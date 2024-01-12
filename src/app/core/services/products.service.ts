@@ -52,7 +52,9 @@ export class ProductsService {
     { productid: 32, type: `Dining`, productname: `Wood Foldable Table`, productdesc: `Make a bold statement in your dining room with our industrial-chic concrete dining table. This table features a durable concrete top that is both stylish and functional. The concrete top is easy to clean and maintain, making it a great choice for everyday use.`, productprice: 12890, productimage: `./../assets/products/diningtables/foldable.webp`, quantity: 1 },
   ]
 
-  addProduct(products: Product, image: File) {
+  addProduct(products, image: File) {
+    console.log(products);
+    console.log(image)
     const formData: FormData = new FormData();
     formData.append('title', products.title.toString())
     formData.append('description', products.description)
@@ -61,14 +63,9 @@ export class ProductsService {
     formData.append('category', products.category)
 
     const headers: HttpHeaders = new HttpHeaders();
+    headers.set('Content-Type', 'multipart/form-data')
+    return this.http.post(`http://localhost:9000/api/admin/products`, formData, { headers })
 
-    this.http.post<Product>('http://localhost:9000/api/admin/products', formData, { headers })
-      .subscribe((res) => {
-        console.log(res);
-      }, (err) => {
-        console.log(err);
-      }
-      )
   }
 
 

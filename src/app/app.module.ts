@@ -8,8 +8,7 @@ import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { ToastrModule } from 'ngx-toastr';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
-import { CustomInterceptor } from './custom.interceptor';
+import { HttpClientModule } from '@angular/common/http'
 
 
 @NgModule({
@@ -30,7 +29,7 @@ import { CustomInterceptor } from './custom.interceptor';
     }),
     CollapseModule.forRoot()
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor, multi: true }]
+  providers: []
   ,
   bootstrap: [AppComponent]
 })

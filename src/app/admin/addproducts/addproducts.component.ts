@@ -14,7 +14,7 @@ import { ProductsService } from 'src/app/core/services/products.service';
 export class AddproductsComponent {
 
   isSideBarCollapsed: boolean = false
-
+  images: File
   @ViewChild('productForm') form: NgForm
   addedProducts = []
 
@@ -24,17 +24,26 @@ export class AddproductsComponent {
     this.isSideBarCollapsed = !this.isSideBarCollapsed;
   }
 
+  selectImage(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0]
+      this.images = file
+    }
+  }
+
   onFormSubmitted() {
     const addedProducts = {
       title: this.form.value.title,
       description: this.form.value.description,
       price: this.form.value.price,
-      image: null,
       category: this.form.value.category,
     };
 
-    const imageFile: File = this.form.value.image
-    this.productService.addProduct(addedProducts, imageFile)
+    this.productService.addProduct(addedProducts, this.images).subscribe((res) => {
+      console.log(res);
+    }, (err) => {
+      console.log(err);
+    })
     this.toast.success("Product Added ")
     this.form.reset()
   }

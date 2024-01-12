@@ -140,7 +140,7 @@
           <label class="col-md-4 col-form-label text-md-right" for="product_name_fr">PRODUCT IMAGE</label>
           <div class="col-md-6">
             <input id="product_name_fr" name="image" placeholder="IMAGE URL" class="form-control" required=""
-              type="file" ngModel>
+              type="file" (change)="selectImage($event)">
           </div>
         </div>
 

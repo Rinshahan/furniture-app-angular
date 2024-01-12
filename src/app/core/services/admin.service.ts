@@ -9,14 +9,20 @@ import { Admin } from '../models/admin.model';
   providedIn: 'root'
 })
 export class AdminService {
-  adminUsers: user[] = []
+  adminLogged: boolean = false
   constructor(private productService: ProductsService, private http: HttpClient) {
-
   }
+
 
   adminLogin(username: string, password: string) {
     const admin: Admin = { username: username, password: password }
     return this.http.post('http://localhost:9000/api/admin/login', admin)
+  }
+
+  
+
+  getAdminUsers() {
+    return this.http.get('http://localhost:9000/api/admin/users')
   }
 
 

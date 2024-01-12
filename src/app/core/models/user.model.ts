@@ -3,6 +3,6 @@ export class user {
   email: ''
   username: ''
   password: ''
-  addedDate: any
+  accountCreatedDate: Date
   index: any
 }

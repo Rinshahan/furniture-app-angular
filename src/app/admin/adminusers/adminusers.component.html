@@ -111,6 +111,7 @@
                     <tr>
                       <th scope="col" class="border-0 text-uppercase font-medium">Name</th>
                       <th scope="col" class="border-0 text-uppercase font-medium">Email</th>
+                      <th scope="col" class="border-0 text-uppercase font-medium">Account Created</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -121,7 +122,9 @@
                       <td>
                         <span class="text-muted">{{ user.email }}</span>
                       </td>
-                      <td></td>
+                      <td>
+                        <span class="text-muted">{{ user.accountCreatedDate }}</span>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
