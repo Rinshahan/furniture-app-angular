@@ -26,6 +26,7 @@ export class CartComponent implements OnInit, OnChanges {
     this.userService.showSearchBox = false;
     this.userService.showCart = false
     this.userId = this.userService.userId
+
     this.productService.getCart(this.userId).subscribe((res: ApiResponse) => {
       const productIds = res.data.getCart.product;
       this.fetchProductDetails(productIds)
@@ -42,7 +43,6 @@ export class CartComponent implements OnInit, OnChanges {
     const productRequests = productIds.map(productId => this.productService.getProductById(productId))
     forkJoin(productRequests).subscribe((products: Product[]) => {
       this.cartProducts = products.map(product => product.data.productById)
-      console.log(this.cartProducts);
     }, (err) => {
       console.log(err);
     })

@@ -34,6 +34,7 @@ export class NavbarComponent implements OnInit {
       this.toast.success("Logged Out")
       localStorage.removeItem('token')
       this.userService.isLogged = false
+      history.pushState(null, null, '/login')
     }, (err) => {
       this.toast.error(err.error.message)
     })

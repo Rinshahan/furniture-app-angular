@@ -23,7 +23,7 @@ export class ProductdetailComponent implements OnInit {
       this.product = products.data.productById
     }, (err) => {
       console.log(err);
-      this.toast.info(err.message)
+      this.toast.info(err.error.message)
     })
     this.userService.showSearchBox = false
     this.userService.showCart = true

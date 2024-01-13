@@ -8,8 +8,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
 import { HTTP_INTERCEPTORS, HttpInterceptor } from '@angular/common/http';
-import { CustomInterceptor } from './interceptors/custom.interceptor';
-import { AdminInterceptor } from './interceptors/admin.interceptor';
+import { TokenInterceptor } from './interceptors/token-interceptor.interceptor';
 
 
 
@@ -19,8 +18,7 @@ const routes: Routes = [
 ]
 
 const httpInterceptorProviders = [
-  { provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor, multi: true },
-  { provide: HTTP_INTERCEPTORS, useClass: AdminInterceptor, multi: true }
+  { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
 ]
 
 @NgModule({

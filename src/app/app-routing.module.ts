@@ -16,6 +16,7 @@ import { AddproductsComponent } from './admin/addproducts/addproducts.component'
 import { EditproductComponent } from './admin/editproduct/editproduct.component';
 import { NotfoundComponent } from './core/notfound/notfound.component';
 import { adminGuard } from './core/guards/admin.guard';
+import { CustomInterceptor } from './core/interceptors/custom.interceptor';
 
 const routes: Routes = [
   { path: 'home', loadChildren: () => import('./core/core.module').then(m => m.CoreModule) },

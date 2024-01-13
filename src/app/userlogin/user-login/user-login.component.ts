@@ -41,7 +41,7 @@ export class UserLoginComponent {
       this.userService.isLogged = true
     }, (err) => {
       console.log(err);
-      this.toast.info(err.message)
+      this.toast.info(err.error.message)
     })
     this.form.reset();
   }
