@@ -1,10 +1,8 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
-import { FilterService } from 'src/app/core/services/filter.service';
 import { Product } from 'src/app/core/models/products.model';
 import { UserService } from 'src/app/core/services/user.service';
-import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { ProductsService } from 'src/app/core/services/products.service';
-import Cart from 'src/app/core/models/cart.model';
 import { ApiResponse } from 'src/app/core/models/api.model';
 import { forkJoin } from 'rxjs';
 

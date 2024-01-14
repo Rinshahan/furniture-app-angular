@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductsService } from './services/products.service';
-import { FilterService } from './services/filter.service';
 import { UserService } from './services/user.service';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -31,6 +30,6 @@ const httpInterceptorProviders = [
     SharedModule,
     RouterModule.forChild(routes)
   ],
-  providers: [ProductsService, FilterService, UserService, httpInterceptorProviders]
+  providers: [ProductsService, UserService, httpInterceptorProviders]
 })
 export class CoreModule { }

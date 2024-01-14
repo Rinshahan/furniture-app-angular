@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FilterService } from 'src/app/core/services/filter.service';
 import { Product } from 'src/app/core/models/products.model';
 import { UserService } from 'src/app/core/services/user.service';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
@@ -12,7 +11,7 @@ import { ProductsService } from 'src/app/core/services/products.service';
   styleUrls: ['./productdetail.component.css']
 })
 export class ProductdetailComponent implements OnInit {
-  constructor(private activatedRoute: ActivatedRoute, private userService: UserService, private filterService: FilterService, private productService: ProductsService, private toast: ToastrService) { }
+  constructor(private activatedRoute: ActivatedRoute, private userService: UserService, private productService: ProductsService, private toast: ToastrService) { }
   product: Product
   productId: string;
   userId: string

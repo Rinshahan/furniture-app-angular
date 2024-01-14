@@ -29,6 +29,10 @@ export class UserService {
 
   }
 
+  payment() {
+    return this.http.get('http://localhost:9000/api/users/659e2ab937a282ca775bd918/orders')
+  }
+
   logout() {
     return this.http.get('http://localhost:9000/api/users/logout')
   }
