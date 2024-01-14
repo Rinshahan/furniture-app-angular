@@ -1,7 +1,7 @@
 import Cart from "./cart.model";
 import { user } from "./user.model";
 
-export interface ApiResponse {
+export interface cartResponse {
   status: string;
   data: {
     getCart: Cart;
@@ -14,6 +14,11 @@ export interface UserResponse {
   data: {
     users: user[];
   };
+}
+
+export interface paymentResponse {
+  status: string,
+  session: string
 }
 
 

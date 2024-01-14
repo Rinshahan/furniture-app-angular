@@ -3,8 +3,6 @@ import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Product } from '../models/products.model';
 import { Observable } from 'rxjs';
-import { UserService } from './user.service';
-import { ApiResponse } from '../models/api.model';
 
 
 @Injectable({

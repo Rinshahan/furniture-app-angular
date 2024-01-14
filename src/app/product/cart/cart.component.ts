@@ -3,7 +3,7 @@ import { Product } from 'src/app/core/models/products.model';
 import { UserService } from 'src/app/core/services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { ProductsService } from 'src/app/core/services/products.service';
-import { ApiResponse } from 'src/app/core/models/api.model';
+import { cartResponse, paymentResponse } from 'src/app/core/models/api.model';
 import { forkJoin } from 'rxjs';
 
 
@@ -25,7 +25,7 @@ export class CartComponent implements OnInit, OnChanges {
     this.userService.showCart = false
     this.userId = this.userService.userId
 
-    this.productService.getCart(this.userId).subscribe((res: ApiResponse) => {
+    this.productService.getCart(this.userId).subscribe((res: cartResponse) => {
       const productIds = res.data.getCart.product;
       this.fetchProductDetails(productIds)
       this.totalPrice = res.data.totalPrice
@@ -46,8 +46,13 @@ export class CartComponent implements OnInit, OnChanges {
     })
   }
 
-  updateTotalPrice() {
+  checkOut() {
+    this.userService.payment().subscribe((res: paymentResponse) => {
 
+      window.location.href = res.session
+    }, (err) => {
+      console.log(err)
+    })
   }
 
   deleteProduct(productId) {
