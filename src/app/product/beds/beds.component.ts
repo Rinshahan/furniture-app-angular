@@ -20,8 +20,7 @@ export class BedsComponent implements OnInit {
     this.productService.getProductByCategory(type).subscribe((products) => {
       this.beds = products.data.productCategory
     })
-    //this.filterService.filteringBeds(type)
-    //this.beds = this.filterService.filteredProducts
+
     this.userService.showSearchBox = false
   }
 }
